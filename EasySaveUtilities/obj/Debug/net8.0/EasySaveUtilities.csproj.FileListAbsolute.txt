@@ -1,0 +1,12 @@
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\bin\Debug\net8.0\EasySaveUtilities.deps.json
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\bin\Debug\net8.0\EasySaveUtilities.dll
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\bin\Debug\net8.0\EasySaveUtilities.pdb
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.AssemblyInfoInputs.cache
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.AssemblyInfo.cs
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.csproj.CoreCompileInputs.cache
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.sourcelink.json
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.dll
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\refint\EasySaveUtilities.dll
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\EasySaveUtilities.pdb
+C:\Documents Cesi\S1\prog sys\src\EasySaveUtilities\obj\Debug\net8.0\ref\EasySaveUtilities.dll
