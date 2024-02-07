@@ -1,13 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EasySaveUtilities.Models;
 
 namespace EasySave_v1._0
 {
-    internal class BackupsAppController
+    class BackupsAppController
     {
-        
+        private List<Backup> backups;
+
+        public BackupsAppController()
+        {
+            backups = new List<Backup>();
+        }
+
+        public void AddBackup(Backup job)
+        {
+            
+            backups.Add(job);
+        }
+
+        public List<Backup> GetAllBackups()
+        {
+            return backups;
+        }
+        public List<Backup> GetBackups() {return backups;}
     }
 }
