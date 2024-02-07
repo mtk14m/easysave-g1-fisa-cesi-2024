@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\EasySave-v1.0",
-    "\\EasySaveClassesPackage",
-    "\\EasySaveSln"
+    "\\EasySaveSln",
+    "\\EasySaveUtilities"
   ],
-  "SelectedNode": "\\EasySaveSln\\EasySaveSln.sln",
+  "SelectedNode": "\\EasySave-v1.0\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
