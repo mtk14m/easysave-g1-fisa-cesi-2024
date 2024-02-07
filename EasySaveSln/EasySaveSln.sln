@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySave-v1.0", "..\EasySav
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySaveClassesPackage", "..\EasySaveClassesPackage\EasySaveClassesPackage.csproj", "{C9FD94DC-95A4-4B4B-967F-3A37B8B178DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySaveUtilities", "..\EasySaveUtilities\EasySaveUtilities.csproj", "{4E39D215-9E54-4C9C-910D-7C1DAEE2C54C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C9FD94DC-95A4-4B4B-967F-3A37B8B178DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FD94DC-95A4-4B4B-967F-3A37B8B178DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FD94DC-95A4-4B4B-967F-3A37B8B178DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E39D215-9E54-4C9C-910D-7C1DAEE2C54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E39D215-9E54-4C9C-910D-7C1DAEE2C54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E39D215-9E54-4C9C-910D-7C1DAEE2C54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E39D215-9E54-4C9C-910D-7C1DAEE2C54C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
