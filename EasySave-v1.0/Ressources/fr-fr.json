@@ -1,0 +1,8 @@
+{
+  "main_menu": "Menu principal",
+  "add_backup_job": "Ajouter une tâche de sauvegarde",
+  "list_backup_jobs": "Lister les tâches de sauvegarde",
+  "exit": "Quitter",
+  "enter_choice": "Entrez votre choix : ",
+  "invalid_choice": "Choix invalide. Veuillez réessayer."
+}

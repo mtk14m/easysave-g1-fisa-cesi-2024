@@ -1,0 +1,8 @@
+{
+  "main_menu": "Main Menu",
+  "add_backup_job": "Add Backup Job",
+  "list_backup_jobs": "List Backup Jobs",
+  "exit": "Exit",
+  "enter_choice": "Enter your choice: ",
+  "invalid_choice": "Invalid choice. Please try again."
+}
