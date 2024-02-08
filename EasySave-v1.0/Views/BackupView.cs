@@ -14,7 +14,7 @@ namespace EasySave_v1._0.Views
     internal class BackupView
     {
         private BackupController controller;
-        
+
         // Initialisation du traducteur
         Translator translator = new Translator();
 
@@ -64,12 +64,22 @@ namespace EasySave_v1._0.Views
             else
             {
                 Console.WriteLine("Backup Jobs:");
-                foreach (var job in backupJobs)
+                for (int i = 0; i < backupJobs.Count; i++)
                 {
-                    Console.WriteLine($"Name: {job.Name}, Source Directory: {job.SourceDirectory}, Target Directory: {job.TargetDirectory}, Type: {job.Type}");
+                    var job = backupJobs[i];
+                    Console.ForegroundColor = i % 2 == 0 ? ConsoleColor.DarkGray : ConsoleColor.Gray;
+                    Console.WriteLine($" {i + 1}. Name: {job.Name}");
+                    Console.WriteLine($"    Source Directory: {job.SourceDirectory}");
+                    Console.WriteLine($"    Target Directory: {job.TargetDirectory}");
+                    Console.WriteLine($"    Type: {job.Type}");
+                    Console.WriteLine($"    Files Copied: {job.CopiedFiles}");
+                    Console.WriteLine($"    Time Taken: {job.ElapsedTime}");
+                    Console.WriteLine();
                 }
+                Console.ResetColor();
             }
+        }
 
+    }
 
-    }   }
 }

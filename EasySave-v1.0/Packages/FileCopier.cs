@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasySave_v1._0.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,12 @@ namespace EasySave_v1._0.Packages
     internal class FileCopier
     {
 
-        public async Task CopyFilesAsync(string sourceDirectory, string targetDirectory)
+        public async Task CopyFilesAsync(BackupJob backupJob)
         {
             try
             {
                 // Obtenir la liste des fichiers à copier
-                string[] sourceFiles = Directory.GetFiles(sourceDirectory, "*", SearchOption.AllDirectories);
+                string[] sourceFiles = Directory.GetFiles(backupJob.SourceDirectory, "*", SearchOption.AllDirectories);
                 int totalFiles = sourceFiles.Length;
                 int copiedFiles = 0;
 
@@ -23,20 +24,37 @@ namespace EasySave_v1._0.Packages
 
                 foreach (string sourceFile in sourceFiles)
                 {
-                    string relativePath = Path.GetRelativePath(sourceDirectory, sourceFile);
-                    string targetFilePath = Path.Combine(targetDirectory, relativePath);
+                    string relativePath = Path.GetRelativePath(backupJob.SourceDirectory, sourceFile);
+                    string targetFilePath = Path.Combine(backupJob.TargetDirectory, relativePath);
 
-                    // Copier le fichier
-                    await Task.Run(() => File.Copy(sourceFile, targetFilePath, true));
-                    copiedFiles++;
+                    if (backupJob.Type.ToLower() == "full" || !File.Exists(targetFilePath))
+                    {
+                        // Copie complète ou le fichier n'existe pas dans le dossier cible
+                        await Task.Run(() => File.Copy(sourceFile, targetFilePath, true));
+                        copiedFiles++;
+                    }
+                    else if (backupJob.Type.ToLower() == "differential")
+                    {
+                        // Copie différentielle (si le fichier source est plus récent que le fichier cible)
+                        DateTime sourceLastWriteTime = File.GetLastWriteTime(sourceFile);
+                        DateTime targetLastWriteTime = File.GetLastWriteTime(targetFilePath);
+
+                        if (sourceLastWriteTime > targetLastWriteTime)
+                        {
+                            await Task.Run(() => File.Copy(sourceFile, targetFilePath, true));
+                            copiedFiles++;
+                        }
+                    }
 
                     // Calculer la progression
+                    //backupJob.ProgressPercentage = (double)copiedFiles / totalFiles * 100;
                     int remainingFiles = totalFiles - copiedFiles;
                     TimeSpan elapsedTime = stopwatch.Elapsed;
-                    TimeSpan remainingTime = TimeSpan.FromSeconds(elapsedTime.TotalSeconds / copiedFiles * remainingFiles);
+                    backupJob.TimePerFile = TimeSpan.FromSeconds(elapsedTime.TotalSeconds / copiedFiles);
+                    backupJob.RemainingTime = TimeSpan.FromSeconds(elapsedTime.TotalSeconds / copiedFiles * remainingFiles);
 
                     // Afficher la progression
-                    Console.WriteLine($"Copied {copiedFiles}/{totalFiles} files. Remaining time: {remainingTime}");
+                    Console.WriteLine($"Progress: {backupJob.ProgressPercentage:F2}% - Copied {copiedFiles}/{totalFiles} files - Time per file: {backupJob.TimePerFile:g} - Remaining time: {backupJob.RemainingTime:g}");
 
                     // Attente d'une seconde entre chaque copie (facultatif)
                     await Task.Delay(1000);
@@ -47,7 +65,9 @@ namespace EasySave_v1._0.Packages
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-      
             }
-    }   }
+        }
+
+    }
 }
+

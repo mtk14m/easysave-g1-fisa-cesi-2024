@@ -1,4 +1,5 @@
 ﻿using EasySave_v1._0.Models;
+using EasySave_v1._0.Packages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace EasySave_v1._0.Controllers
         private List<BackupJob> backupJobs;
         private readonly string jsonPath = Path.Combine(Environment.CurrentDirectory, "backupjobs.json");
         private const int MaxJobs = 5;
+
+        //utiliser fileCopier
+        private FileCopier fileCopier =  new FileCopier();
 
         public BackupController()
         {
@@ -87,6 +91,9 @@ namespace EasySave_v1._0.Controllers
             {
                 throw new ArgumentException("Backup job type cannot be empty.");
             }
+
+            // lancer la copie
+            fileCopier.CopyFilesAsync(job).Wait();
         }
 
         private void TrimBackupJobsIfNeeded()
