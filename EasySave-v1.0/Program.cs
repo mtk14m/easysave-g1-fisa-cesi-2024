@@ -12,7 +12,7 @@ namespace EasySave
         {
             // Initialisation du traducteur
             Translator translator = new Translator();
-            translator.LoadTranslations("translations.json");
+            translator.LoadTranslations("../../../Ressources/fr-fr.json");
 
             // Création du contrôleur de sauvegarde et de la vue de sauvegarde
             BackupController backupController = new BackupController();

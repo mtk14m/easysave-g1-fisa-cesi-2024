@@ -12,3 +12,4 @@ C:\Documents Cesi\S1\prog sys\dir\EasySave-v1.0\obj\Debug\net8.0\refint\EasySave
 C:\Documents Cesi\S1\prog sys\dir\EasySave-v1.0\obj\Debug\net8.0\EasySave-v1.0.pdb
 C:\Documents Cesi\S1\prog sys\dir\EasySave-v1.0\obj\Debug\net8.0\EasySave-v1.0.genruntimeconfig.cache
 C:\Documents Cesi\S1\prog sys\dir\EasySave-v1.0\obj\Debug\net8.0\ref\EasySave-v1.0.dll
+C:\Documents Cesi\S1\prog sys\dir\EasySave-v1.0\obj\Debug\net8.0\EasySave-v1.0.sourcelink.json
