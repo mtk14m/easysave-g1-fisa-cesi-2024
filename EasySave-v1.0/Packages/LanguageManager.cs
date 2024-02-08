@@ -9,23 +9,21 @@ namespace EasySave_v1._0.Packages
     internal class LanguageManager
     {
         private Translator translator;
-        private string currentLanguage;
+        //private string currentLanguage;
 
-        public LanguageManager()
+        public LanguageManager(string currentLanguage = "fr-fr")
         {
             translator = new Translator();
-            currentLanguage = "en-us"; // Par défaut, la langue est l'anglais
-            LoadTranslations(); // Chargement des traductions
+            LoadTranslations(currentLanguage); // Chargement des traductions
         }
 
         // Charge les traductions à partir du fichier JSON correspondant à la langue actuelle
-        private void LoadTranslations()
+        internal void LoadTranslations(string currentLanguage)
         {
-            string filePath = $"Ressources/{currentLanguage}.json";
+            string filePath = $"../../../Ressources/{currentLanguage}.json";
             try
             {
-                string json = File.ReadAllText(filePath);
-                translator.LoadTranslations(json);
+                translator.LoadTranslations(filePath);
             }
             catch (Exception ex)
             {
@@ -34,17 +32,11 @@ namespace EasySave_v1._0.Packages
         }
 
         // Change la langue et recharge les traductions
-        public void ChangeLanguage(string language)
+        public void ChangeLanguage(string currentLanguage)
         {
-            if (language == currentLanguage)
-            {
-                Console.WriteLine("Language is already set to " + (language == "en-us" ? "English" : "French"));
-                return;
-            }
-
-            currentLanguage = language;
-            LoadTranslations();
-            Console.WriteLine($"Language changed to {(language == "en" ? "English" : "French")}");
+            //currentLanguage = (currentLanguage == "en-us") ? "fr-fr" : "en-us"; // Toggle entre les deux langues
+            LoadTranslations(currentLanguage);
+            Console.WriteLine($"Language changed to {(currentLanguage == "en-us" ? "English" : "French")}");
         }
 
         // Permet de traduire une phrase avec le Translator

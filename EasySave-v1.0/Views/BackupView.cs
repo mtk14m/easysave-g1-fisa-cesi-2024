@@ -1,5 +1,6 @@
 ﻿using EasySave_v1._0.Controllers;
 using EasySave_v1._0.Models;
+using EasySave_v1._0.Packages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace EasySave_v1._0.Views
     internal class BackupView
     {
         private BackupController controller;
+        
+        // Initialisation du traducteur
+        Translator translator = new Translator();
 
         public BackupView(BackupController backupController)
         {

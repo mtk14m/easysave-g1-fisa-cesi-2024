@@ -4,5 +4,13 @@
   "list_backup_jobs": "Lister les tâches de sauvegarde",
   "exit": "Quitter",
   "enter_choice": "Entrez votre choix : ",
-  "invalid_choice": "Choix invalide. Veuillez réessayer."
+  "invalid_choice": "Choix invalide. Veuillez réessayer.",
+  "enter_name": "Entrez le nom : ",
+  "enter_source_directory": "Entrez le répertoire source : ",
+  "enter_target_directory": "Entrez le répertoire cible : ",
+  "enter_type": "Entrez le type (Complet ou Différentiel) : ",
+  "backup_job_added_successfully": "Tâche de sauvegarde ajoutée avec succès.",
+  "change_language": "Changer de langue"
 }
+
+
