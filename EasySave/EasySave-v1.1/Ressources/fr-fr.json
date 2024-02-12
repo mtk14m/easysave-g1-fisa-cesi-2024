@@ -1,7 +1,7 @@
 {
-  "main_menu": "Menu principal",
-  "add_backup_job": "Ajouter une tâche de sauvegarde",
-  "list_backup_jobs": "Lister les tâches de sauvegarde",
+  "main_menu": "Menu Principal",
+  "add_backup_job": "Ajouter une Tâche de Sauvegarde",
+  "list_backup_jobs": "Lister les Tâches de Sauvegarde",
   "exit": "Quitter",
   "enter_choice": "Entrez votre choix : ",
   "invalid_choice": "Choix invalide. Veuillez réessayer.",
@@ -10,7 +10,23 @@
   "enter_target_directory": "Entrez le répertoire cible : ",
   "enter_type": "Entrez le type (Complet ou Différentiel) : ",
   "backup_job_added_successfully": "Tâche de sauvegarde ajoutée avec succès.",
-  "change_language": "Changer de langue"
+  "change_language": "Changer de Langue",
+  "add_backup_job_prompt": "Ajout d'une tâche de sauvegarde :",
+  "enter_name_prompt": "Nom : ",
+  "enter_source_directory_prompt": "Répertoire source : ",
+  "enter_target_directory_prompt": "Répertoire cible : ",
+  "enter_type_prompt": "Type (Complet ou Différentiel) : ",
+  "backup_job_added_successfully_message": "Tâche de sauvegarde ajoutée avec succès.",
+  "no_backup_jobs_found_message": "Aucune tâche de sauvegarde trouvée.",
+  "backup_jobs_header": "Tâches de Sauvegarde :",
+  "file_copied_label": "Fichiers Copiés",
+  "time_taken_label": "Temps Passé",
+  "exit_option": "Quitter",
+  "progress_message": "Progression",
+  "copied_files_message": "Fichiers Copiés",
+  "total_files_message": "Total des Fichiers",
+  "time_per_file_message": "Temps par Fichier",
+  "remaining_time_message": "Temps Restant",
+  "file_copy_completed_message": "Copie des Fichiers Terminée",
+  "error_occurred_message": "Une erreur est survenue"
 }
-
-

@@ -7,29 +7,22 @@ using System;
 namespace EasySave
 {
     class Program
-    {  
+    {
+        //static string language = "fr-fr";
         static void Main(string[] args)
         {
             // Initialisation du traducteur
-            string language = "fr-fr";
-            
 
-            //Translator translator = new Translator();
-            //translator.LoadTranslations("../../../Ressources/fr-fr.json");
-
-            LanguageManager translator = new LanguageManager(language);
+            LanguageManager translator = new LanguageManager();
 
             // Création du contrôleur de sauvegarde et de la vue de sauvegarde
-            BackupController backupController = new BackupController();
+            BackupController backupController = new BackupController(translator);
             BackupView backupView = new BackupView(backupController);
-
-            //la langue
-            
 
             // Menu principal
             while (true)
             {
-                translator.LoadTranslations(language);
+                translator.LoadTranslations();
                 Console.WriteLine(translator.Translate("main_menu"));
 
                 Console.WriteLine($"1. {translator.Translate("add_backup_job")}");
@@ -39,8 +32,6 @@ namespace EasySave
 
                 Console.Write(translator.Translate("enter_choice"));
                 string choice = Console.ReadLine();
-
-                Console.WriteLine(language);
 
                 switch (choice)
                 {
@@ -60,19 +51,13 @@ namespace EasySave
                         Console.WriteLine(translator.Translate("invalid_choice"));
                         break;
                 }
-        
-            
-           
             
             }
 
             void chLanguage()
             {
-
-                language = (language == "en-us") ? "fr-fr" : "en-us"; // Toggle entre les deux langues
-                translator.ChangeLanguage(language);
-                translator.LoadTranslations(language);
-                Console.WriteLine(language);
+                translator.ChangeLanguage();
+                translator.LoadTranslations();
             }
             
 

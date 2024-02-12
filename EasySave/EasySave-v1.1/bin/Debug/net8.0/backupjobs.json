@@ -1,9 +1,9 @@
 [
   {
-    "Name": "Test",
-    "SourceDirectory": "huhuhufhuhfuhufhf",
-    "TargetDirectory": "hufhufhufufhuhufhuhfuhfuhufh",
-    "Type": "full",
+    "Name": "Minou",
+    "SourceDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
+    "TargetDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\target",
+    "Type": "Complet",
     "LastRun": "0001-01-01T00:00:00",
     "JobState": 0,
     "TotalFiles": 0,
@@ -16,7 +16,7 @@
     "ProgressPercentage": 100
   },
   {
-    "Name": "Test",
+    "Name": "Test3",
     "SourceDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
     "TargetDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\target",
     "Type": "full",
@@ -32,9 +32,9 @@
     "ProgressPercentage": 100
   },
   {
-    "Name": "Test",
-    "SourceDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
-    "TargetDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\target",
+    "Name": "Test5",
+    "SourceDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\target",
+    "TargetDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
     "Type": "full",
     "LastRun": "0001-01-01T00:00:00",
     "JobState": 0,
@@ -44,7 +44,39 @@
     "ElapsedTime": "00:00:00",
     "RemainingTime": "00:00:00",
     "StartTime": "0001-01-01T00:00:00",
-    "TimePerFile": "00:00:04.2428455",
+    "TimePerFile": "00:00:00",
+    "ProgressPercentage": 100
+  },
+  {
+    "Name": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
+    "SourceDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\target",
+    "TargetDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
+    "Type": "Full",
+    "LastRun": "0001-01-01T00:00:00",
+    "JobState": 1,
+    "TotalFiles": 3,
+    "CopiedFiles": 3,
+    "RemainingFiles": 0,
+    "ElapsedTime": "00:00:23.9101593",
+    "RemainingTime": "00:00:00",
+    "StartTime": "0001-01-01T00:00:00",
+    "TimePerFile": "00:00:00",
+    "ProgressPercentage": 100
+  },
+  {
+    "Name": "Lamarana",
+    "SourceDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\src",
+    "TargetDirectory": "C:\\Users\\minou.matokonkalou\\OneDrive - Magellan Partners\\Bureau\\target",
+    "Type": "full",
+    "LastRun": "0001-01-01T00:00:00",
+    "JobState": 1,
+    "TotalFiles": 3,
+    "CopiedFiles": 3,
+    "RemainingFiles": 0,
+    "ElapsedTime": "00:00:23.7760632",
+    "RemainingTime": "00:00:00",
+    "StartTime": "0001-01-01T00:00:00",
+    "TimePerFile": "00:00:00",
     "ProgressPercentage": 100
   }
 ]

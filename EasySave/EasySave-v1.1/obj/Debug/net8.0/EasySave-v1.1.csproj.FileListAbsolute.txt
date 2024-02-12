@@ -13,3 +13,6 @@ C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\obj\Debug\net8.0\refint
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\obj\Debug\net8.0\EasySave-v1.1.pdb
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\obj\Debug\net8.0\EasySave-v1.1.genruntimeconfig.cache
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\obj\Debug\net8.0\ref\EasySave-v1.1.dll
+C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\obj\Debug\net8.0\EasySave-v1.1.csproj.AssemblyReference.cache
+C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v1.1\obj\Debug\net8.0\EasySave-v1.1.csproj.CopyComplete

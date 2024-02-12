@@ -14,32 +14,35 @@ namespace EasySave_v1._0.Views
     internal class BackupView
     {
         private BackupController controller;
-
-        // Initialisation du traducteur
-        Translator translator = new Translator();
+        private LanguageManager translator;
 
         public BackupView(BackupController backupController)
         {
             controller = backupController;
+            translator = new LanguageManager();
+            translator.LoadTranslations();
         }
 
         public void ShowMenu()
         {
-            Console.WriteLine("Welcome to EasySave!");
-            Console.WriteLine("1. Add Backup Job");
-            Console.WriteLine("2. List Backup Jobs");
-            Console.WriteLine("3. Exit");
+            translator.LoadTranslations();
+            Console.WriteLine($"{translator.Translate("main_menu")}");
+            Console.WriteLine($"1. {translator.Translate("add_backup_job")}");
+            Console.WriteLine($"2. {translator.Translate("list_backup_jobs")}");
+            Console.WriteLine($"3. {translator.Translate("exit")}");
+
         }
         public void AddBackupJob()
         {
-            Console.WriteLine("Adding Backup Job:");
-            Console.Write("Enter Name: ");
+            translator.LoadTranslations();
+            Console.WriteLine($"{translator.Translate("add_backup_job_prompt")}");
+            Console.Write($"{translator.Translate("enter_name_prompt")}");
             string name = Console.ReadLine();
-            Console.Write("Enter Source Directory: ");
+            Console.Write($"{translator.Translate("enter_source_directory_prompt")}");
             string sourceDirectory = Console.ReadLine();
-            Console.Write("Enter Target Directory: ");
+            Console.Write($"{translator.Translate("enter_target_directory_prompt")}");
             string targetDirectory = Console.ReadLine();
-            Console.Write("Enter Type (Complet or Differential): ");
+            Console.Write($"{translator.Translate("enter_type_prompt")}");
             string type = Console.ReadLine();
 
             controller.AddBackupJob(new BackupJob
@@ -50,36 +53,38 @@ namespace EasySave_v1._0.Views
                 Type = type
             });
 
-            Console.WriteLine("Backup Job added successfully.");
+            Console.WriteLine($"{translator.Translate("backup_job_added_successfully_message")}");
         }
 
         public void ListBackupJobs()
         {
+            translator.LoadTranslations();
             var backupJobs = controller.GetAllBackupJobs();
+
 
             if (backupJobs.Count == 0)
             {
-                Console.WriteLine("No backup jobs found.");
+                Console.WriteLine($"{translator.Translate("no_backup_jobs_found_message")}");
             }
             else
             {
-                Console.WriteLine("Backup Jobs:");
+                Console.WriteLine($"{translator.Translate("backup_jobs_header")}");
                 for (int i = 0; i < backupJobs.Count; i++)
                 {
                     var job = backupJobs[i];
                     Console.ForegroundColor = i % 2 == 0 ? ConsoleColor.DarkGray : ConsoleColor.Gray;
-                    Console.WriteLine($" {i + 1}. Name: {job.Name}");
-                    Console.WriteLine($"    Source Directory: {job.SourceDirectory}");
-                    Console.WriteLine($"    Target Directory: {job.TargetDirectory}");
-                    Console.WriteLine($"    Type: {job.Type}");
-                    Console.WriteLine($"    Files Copied: {job.CopiedFiles}");
-                    Console.WriteLine($"    Time Taken: {job.ElapsedTime}");
+                    Console.WriteLine($" {i + 1}. {translator.Translate("enter_name_prompt")}: {job.Name}");
+                    Console.WriteLine($"    {translator.Translate("enter_source_directory_prompt")}: {job.SourceDirectory}");
+                    Console.WriteLine($"    {translator.Translate("enter_target_directory_prompt")}: {job.TargetDirectory}");
+                    Console.WriteLine($"    {translator.Translate("enter_type_prompt")}: {job.Type}");
+                    Console.WriteLine($"    {translator.Translate("file_copied_label")}: {job.CopiedFiles}");
+                    Console.WriteLine($"    {translator.Translate("time_taken_label")}: {job.ElapsedTime}");
                     Console.WriteLine();
                 }
                 Console.ResetColor();
             }
         }
 
-    }
 
+    }
 }
