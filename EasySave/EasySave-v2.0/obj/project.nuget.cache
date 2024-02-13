@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Z7H2s1vuS+yuxvuUxnhPVoPAg8dwYXbERgX4DFFIL336+cPBbT3Dc/dbVRFD2VtDqKoSNBu/4Tj9g3d3iUi7QA==",
+  "dgSpecHash": "8FU7VcuZEMGOPXw0WFsqpNmz8NaDBAFHa1+8/Re9W03iXxCG08Js+XINtaeqIiIKLmuRTxKPIP72wYXnGHsBOQ==",
   "success": true,
   "projectFilePath": "C:\\Documents Cesi\\S1\\prog sys\\dir\\EasySave\\EasySave-v2.0\\EasySave-v2.0.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
   "logs": []
 }
