@@ -61,7 +61,6 @@ namespace EasySave_v1._0.Views
             translator.LoadTranslations();
             var backupJobs = controller.GetAllBackupJobs();
 
-
             if (backupJobs.Count == 0)
             {
                 Console.WriteLine($"{translator.Translate("no_backup_jobs_found_message")}");
@@ -82,9 +81,14 @@ namespace EasySave_v1._0.Views
                     Console.WriteLine();
                 }
                 Console.ResetColor();
+
+                Console.WriteLine($"{translator.Translate("enter_choice")}");
+                Console.Write("> ");
+                string choice = Console.ReadLine();
+
+                controller.ExecuteBackup(choice);
             }
         }
-
 
     }
 }

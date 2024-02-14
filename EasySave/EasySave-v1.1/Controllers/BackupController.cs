@@ -36,7 +36,7 @@ namespace EasySave_v1._0.Controllers
                 throw new ArgumentNullException(nameof(job));
             }
 
-            ValidateBackupJob(job).Wait();
+            //ValidateBackupJob(job).Wait();
 
             backupJobs.Add(job);
             TrimBackupJobsIfNeeded();
@@ -107,6 +107,76 @@ namespace EasySave_v1._0.Controllers
             // Logger quotidien
              dailyLogger.LogDailyBackup(job);
         }
+
+        public void ExecuteBackup(string backupRange)
+        {
+            string[] backupRanges = backupRange.Split(';');
+
+            foreach (string range in backupRanges)
+            {
+                string[] indices = range.Split('-');
+
+                if (indices.Length == 1) // Plage discrète
+                {
+                    if (!int.TryParse(indices[0].Trim(), out int index))
+                    {
+                        Console.WriteLine($"Invalid backup index: {indices[0]}");
+                        continue;
+                    }
+
+                    if (index < 1 || index > backupJobs.Count)
+                    {
+                        Console.WriteLine($"Backup index out of range: {index}");
+                        continue;
+                    }
+
+                    try
+                    {
+                        BackupJob backupJob = backupJobs[index - 1]; 
+                        ValidateBackupJob(backupJob).Wait();
+                        Console.WriteLine($"Backup job {index} executed successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error executing backup job {index}: {ex.Message}");
+                    }
+                }
+                else if (indices.Length == 2) // Plage continue
+                {
+                    if (!int.TryParse(indices[0].Trim(), out int startIndex) || !int.TryParse(indices[1].Trim(), out int endIndex))
+                    {
+                        Console.WriteLine($"Invalid backup range: {range}");
+                        continue;
+                    }
+
+                    if (startIndex < 1 || endIndex < 1 || startIndex > backupJobs.Count || endIndex > backupJobs.Count || startIndex > endIndex)
+                    {
+                        Console.WriteLine($"Invalid backup range: {range}");
+                        continue;
+                    }
+
+                    for (int i = startIndex; i <= endIndex; i++)
+                    {
+                        try
+                        {
+                            BackupJob backupJob = backupJobs[i - 1]; 
+                            ValidateBackupJob(backupJob).Wait();
+                            Console.WriteLine($"Backup job {i} executed successfully.");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error executing backup job {i}: {ex.Message}");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid backup range: {range}");
+                }
+            }
+        }
+
+
 
         private void TrimBackupJobsIfNeeded()
         {

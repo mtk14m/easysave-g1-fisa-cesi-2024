@@ -47,7 +47,7 @@ namespace EasySave_v2._0
         {
             
             navframe.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.Relative));
-            sidebar.SelectedItem = null;
+            sidebar.SelectedIndex = -1;
         }
     }
 }
