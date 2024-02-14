@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http.Json;
@@ -10,8 +10,8 @@ public class Cryptosoft
 {
     private static readonly byte[] _key = GetKey();
 
-    public static void Main(string[] args)
-    {
+
+
         if (args.Length != 2)
         {
             Console.WriteLine("Usage: dotnet run fichier_source fichier_destination");
@@ -34,9 +34,9 @@ public class Cryptosoft
             Console.WriteLine($"Erreur: {ex.Message}");
             return;
         }
-    }
+    
 
-    private static void EncryptFile(string sourceFile, string destinationFile)
+     static void EncryptFile(string sourceFile, string destinationFile)
     {
         using (FileStream sourceStream = new FileStream(sourceFile, FileMode.Open, FileAccess.Read))
         using (FileStream destinationStream = new FileStream(destinationFile, FileMode.Create, FileAccess.Write))
@@ -56,7 +56,7 @@ public class Cryptosoft
         }
     }
 
-    private static byte[] GetKey()
+     static byte[] GetKey()
     {
         string configFile = "config.json";
 
@@ -92,3 +92,4 @@ public class Cryptosoft
         return Convert.FromBase64String(userKey);
     }
 }
+*/

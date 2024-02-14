@@ -76,8 +76,6 @@ namespace EasySave_v1._0.Views
                     Console.WriteLine($"    {translator.Translate("enter_source_directory_prompt")}: {job.SourceDirectory}");
                     Console.WriteLine($"    {translator.Translate("enter_target_directory_prompt")}: {job.TargetDirectory}");
                     Console.WriteLine($"    {translator.Translate("enter_type_prompt")}: {job.Type}");
-                    Console.WriteLine($"    {translator.Translate("file_copied_label")}: {job.CopiedFiles}");
-                    Console.WriteLine($"    {translator.Translate("time_taken_label")}: {job.ElapsedTime}");
                     Console.WriteLine();
                 }
                 Console.ResetColor();
