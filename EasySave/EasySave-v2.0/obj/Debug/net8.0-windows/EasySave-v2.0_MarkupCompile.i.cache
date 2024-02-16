@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\obj\Debug\net8.0-windows\
+C:\Users\berba\OneDrive - Association Cesi Viacesi mail\3e année\POO\Projet\src\EasySave\EasySave-v2.0\obj\Debug\net8.0-windows\
 EasySave_v2._0
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\App.xaml
-12-1437015527
+C:\Users\berba\OneDrive - Association Cesi Viacesi mail\3e année\POO\Projet\src\EasySave\EasySave-v2.0\App.xaml
+12-1342043294
 
-20-1348704515
-215-2101325551
-Assets\Icons\Icons.xaml;MainWindow.xaml;Pages\BackupsListPage.xaml;Pages\MainPage.xaml;Pages\Page2.xaml;Pages\Page3.xaml;Pages\SettingsPage.xaml;Styles\ButtonStyle.xaml;Styles\ButtontopStyle.xaml;Styles\ListBoxStyle.xaml;Styles\RadioButtonStyle.xaml;Themes\Generic.xaml;
+20-1766150545
+215-302244315
+Assets\Icons\Icons.xaml;MainWindow.xaml;Pages\AddBackupJobPage.xaml;Pages\BackupsListPage.xaml;Pages\MainPage.xaml;Pages\Page3.xaml;Pages\SettingsPage.xaml;Styles\ButtonStyle.xaml;Styles\ButtontopStyle.xaml;Styles\ListBoxStyle.xaml;Styles\RadioButtonStyle.xaml;Themes\Generic.xaml;
 
-True
+False
 

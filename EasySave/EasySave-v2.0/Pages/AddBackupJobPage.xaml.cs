@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SideBar_Nav.Pages
+namespace EasySave_v2._0.Pages
 {
     /// <summary>
     /// Interaction logic for Page2.xaml
     /// </summary>
-    public partial class Page2 : Page
+    public partial class AddBackupJobPage : Page
     {
-        public Page2()
+        public AddBackupJobPage()
         {
             InitializeComponent();
         }

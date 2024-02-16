@@ -29,7 +29,7 @@
                 </Border>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal"   HorizontalAlignment="Right" Visibility="Visible"  Height="50" VerticalAlignment="Bottom">
-                    <Button Cursor="Hand"  Click="Start_Click" Margin="5, 0,0,0"  Width="35" Height="30" Visibility="{Binding IsStartButtonVisible}>
+                    <Button Cursor="Hand"  Click="Start_Click" Margin="5, 0,0,0"  Width="35" Height="30" Visibility="{Binding IsStartButtonVisible}">
                         <Path Grid.Row="3" Data="{DynamicResource start}" Fill="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
                     </Button>
                     <Button Cursor="Hand" Click="Pause_Click" Margin="5, 0,0,0"  Width="35" Height="30">

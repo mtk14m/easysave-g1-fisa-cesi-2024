@@ -53,7 +53,7 @@ namespace EasySave_v2._0
             }
             if (sender == rdAdd)
             {
-                frameContent.Navigate(new Uri("/Pages/Page2.xaml", UriKind.Relative));
+                frameContent.Navigate(new Uri("/Pages/AddBackupJobPage.xaml", UriKind.Relative));
 
             }
             if (sender == rdSettings)

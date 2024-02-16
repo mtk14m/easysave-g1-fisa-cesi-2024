@@ -761,23 +761,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\": {},
+    "C:\\Users\\berba\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Documents Cesi\\S1\\prog sys\\dir\\EasySave\\EasySave-v2.0\\EasySave-v2.0.csproj",
+      "projectUniqueName": "C:\\Users\\berba\\OneDrive - Association Cesi Viacesi mail\\3e année\\POO\\Projet\\src\\EasySave\\EasySave-v2.0\\EasySave-v2.0.csproj",
       "projectName": "EasySave-v2.0",
-      "projectPath": "C:\\Documents Cesi\\S1\\prog sys\\dir\\EasySave\\EasySave-v2.0\\EasySave-v2.0.csproj",
-      "packagesPath": "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\",
-      "outputPath": "C:\\Documents Cesi\\S1\\prog sys\\dir\\EasySave\\EasySave-v2.0\\obj\\",
+      "projectPath": "C:\\Users\\berba\\OneDrive - Association Cesi Viacesi mail\\3e année\\POO\\Projet\\src\\EasySave\\EasySave-v2.0\\EasySave-v2.0.csproj",
+      "packagesPath": "C:\\Users\\berba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\berba\\OneDrive - Association Cesi Viacesi mail\\3e année\\POO\\Projet\\src\\EasySave\\EasySave-v2.0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\minou.matokonkalou\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\berba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -786,7 +786,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

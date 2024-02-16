@@ -16,7 +16,7 @@
     <Page Update="Pages\BackupsListPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Page2.xaml">
+    <Page Update="Pages\AddBackupJobPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Page3.xaml">
