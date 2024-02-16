@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:EasySave_v2._0"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/Generic.xaml"/>
+
+                <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
+                <ResourceDictionary Source="/Styles/RadioButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/ListBoxStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtontopStyle.xaml"/>
+                
+             
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

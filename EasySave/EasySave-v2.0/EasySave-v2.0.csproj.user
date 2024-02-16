@@ -13,7 +13,7 @@
     <Page Update="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Page1.xaml">
+    <Page Update="Pages\BackupsListPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Page2.xaml">
@@ -23,6 +23,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ButtontopStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ListBoxStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Generic.xaml">

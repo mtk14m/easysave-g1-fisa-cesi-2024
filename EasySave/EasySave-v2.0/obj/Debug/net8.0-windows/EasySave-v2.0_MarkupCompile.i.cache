@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\App.xaml
-7988776510
+12-1437015527
 
-12-145056993
-2011529363817
-MainWindow.xaml;Pages\MainPage.xaml;Pages\Page1.xaml;Pages\Page2.xaml;Pages\Page3.xaml;Pages\SettingsPage.xaml;Themes\Generic.xaml;
+20-1348704515
+215-2101325551
+Assets\Icons\Icons.xaml;MainWindow.xaml;Pages\BackupsListPage.xaml;Pages\MainPage.xaml;Pages\Page2.xaml;Pages\Page3.xaml;Pages\SettingsPage.xaml;Styles\ButtonStyle.xaml;Styles\ButtontopStyle.xaml;Styles\ListBoxStyle.xaml;Styles\RadioButtonStyle.xaml;Themes\Generic.xaml;
 
 True
 

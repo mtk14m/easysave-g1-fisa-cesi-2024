@@ -22,32 +22,54 @@ namespace EasySave_v2._0
             InitializeComponent();
 
             //Pour avoir la MainPage en page principale
-            navframe.Navigate(new Uri("/Pages/MainPage.xaml", UriKind.Relative));
+            frameContent.Navigate(new Uri("/Pages/BackupsListPage.xaml", UriKind.Relative));
+            rdShow.IsChecked = true;
         }
 
-        private void sidebar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
 
-            if(sender == sidebar)
+        private void btnRestore_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
+            else
+                WindowState = WindowState.Normal;
+        }
+
+        private void pageNavigation(object sender, RoutedEventArgs e)
+        {
+           /* if(sender == rdMenu)
             {
-                var selected = sidebar.SelectedItem as NavButton;
-                navframe.Navigate(selected?.Navlink);
+                frameContent.Navigate(new Uri("/Pages/MainPage.xaml", UriKind.Relative));
+
+            }*/
+            if (sender == rdShow)
+            {
+                frameContent.Navigate(new Uri("/Pages/BackupsListPage.xaml", UriKind.Relative));
+
+            }
+            if (sender == rdAdd)
+            {
+                frameContent.Navigate(new Uri("/Pages/Page2.xaml", UriKind.Relative));
+
+            }
+            if (sender == rdSettings)
+            {
+                frameContent.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.Relative));
+
             }
 
         }
 
-        private void logo_Click(object sender, RoutedEventArgs e)
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            
-            navframe.Navigate(new Uri("/Pages/MainPage.xaml", UriKind.Relative));
-            sidebar.SelectedIndex = -1;
+            WindowState = WindowState.Minimized;
         }
 
-        private void settings_Click(object sender, RoutedEventArgs e)
-        {
-            
-            navframe.Navigate(new Uri("/Pages/SettingsPage.xaml", UriKind.Relative));
-            sidebar.SelectedIndex = -1;
-        }
+        
+
     }
 }

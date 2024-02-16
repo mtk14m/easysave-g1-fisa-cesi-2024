@@ -10,5 +10,9 @@
 
     <Grid Background="#e3e3e3">
         <TextBlock Text="Main Page" FontFamily="ubuntu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB197FC" FontSize="60" FontWeight="Bold"/>
+        
+        <!--Faire une Liste-->
+        
+        
     </Grid>
 </Page>
