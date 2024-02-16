@@ -88,5 +88,34 @@ namespace EasySave_v1._0.Views
             }
         }
 
+        //changer le type de log
+        public void ChangeLogType()
+        {
+            Console.WriteLine($" {translator.Translate("EnterLogType")}");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out int typeChoose))
+            {
+                if (typeChoose == 0)
+                {
+                    controller.ChangeLogType(typeChoose);
+                    Console.WriteLine($"{translator.Translate("JSONType")}");
+                }
+                else if (typeChoose == 1)
+                {
+                    controller.ChangeLogType(typeChoose);
+                    Console.WriteLine($"{translator.Translate("LogTypeSetTo")}");
+                }
+                else
+                {
+                    Console.WriteLine($"{translator.Translate("InvalidLogType")}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{translator.Translate("InvalidLogTypeInput")}");
+            }
+        }
+
     }
 }

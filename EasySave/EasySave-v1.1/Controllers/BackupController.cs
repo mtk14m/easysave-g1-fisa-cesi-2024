@@ -15,12 +15,14 @@ namespace EasySave_v1._0.Controllers
         private readonly string jsonPath = Path.Combine(Environment.CurrentDirectory, "backupjobs.json");
         private const int MaxJobs = 5;
 
+        public static string logType ="json";
+
         // Injecter LanguageManager dans FileCopier
         private LanguageManager languageManager;
         private FileCopier fileCopier;
 
-        private DailyLogger dailyLogger = new DailyLogger(Path.Combine(Environment.CurrentDirectory, "../../../Logs", "daily_log.json"));
-        private StateLogger stateLogger = new StateLogger(Path.Combine(Environment.CurrentDirectory, "../../../Logs", "state_log.json"));
+        private DailyLogger dailyLogger = new DailyLogger(Path.Combine(Environment.CurrentDirectory, "../../../Logs", "daily_log"));
+        private StateLogger stateLogger = new StateLogger(Path.Combine(Environment.CurrentDirectory, "../../../Logs", "state_log"));
 
         public BackupController(LanguageManager manager)
         {
@@ -102,10 +104,10 @@ namespace EasySave_v1._0.Controllers
             await fileCopier.CopyFilesAsync(job);
 
             // Logger pour l'état
-            await stateLogger.LogStateAsync(job);
+            await stateLogger.LogStateAsync(job, logType);
 
             // Logger quotidien
-             dailyLogger.LogDailyBackup(job);
+             dailyLogger.LogDailyBackup(job, logType);
         }
 
         public void ExecuteBackup(string backupRange)
@@ -176,7 +178,14 @@ namespace EasySave_v1._0.Controllers
             }
         }
 
+        public void ChangeLogType(int typeChoose)
+        {
+            if (typeChoose == 0) logType = "json";
 
+            if (typeChoose == 1) logType = "xml";
+
+        }
+        
 
         private void TrimBackupJobsIfNeeded()
         {

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace EasySave_v1._1.Models
 {
@@ -17,7 +18,7 @@ namespace EasySave_v1._1.Models
             this.logFilePath = logFilePath;
         }
 
-        public async Task LogStateAsync(BackupJob backupJob)
+        public async Task LogStateAsync(BackupJob backupJob , string logType)
         {
             try
             {
@@ -33,12 +34,35 @@ namespace EasySave_v1._1.Models
                     NbFilesLeftToDo = backupJob.RemainingFiles,
                     Progression = backupJob.ProgressPercentage
                 };
-
+/*
                 // Sérialiser l'objet en JSON
                 string jsonLogEntry = Newtonsoft.Json.JsonConvert.SerializeObject(stateLogEntry);
 
                 // Écrire le JSON dans le fichier de journal de manière asynchrone
-                await File.AppendAllTextAsync(logFilePath, jsonLogEntry + Environment.NewLine);
+                await File.AppendAllTextAsync(logFilePath, jsonLogEntry + Environment.NewLine);*/
+
+                if (logType == "json")
+                {
+                    // Sérialiser l'objet en JSON
+                    string jsonLogEntry = Newtonsoft.Json.JsonConvert.SerializeObject(stateLogEntry);
+
+                    // Écrire le JSON dans le fichier de journal
+                    await File.AppendAllTextAsync($"{logFilePath}.json", jsonLogEntry + Environment.NewLine);
+
+                }
+
+                if (logType == "xml")
+                {
+                    // Sérialiser l'objet en XML
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(StateLogEntry));
+                    using (StringWriter writer = new StringWriter())
+                    {
+                        xmlSerializer.Serialize(writer, stateLogEntry);
+
+                        // Écrire le XML dans le fichier de journal
+                        await File.AppendAllTextAsync($"{logFilePath}.xml", writer.ToString() + Environment.NewLine);
+                    }
+                }
             }
             catch (Exception ex)
             {

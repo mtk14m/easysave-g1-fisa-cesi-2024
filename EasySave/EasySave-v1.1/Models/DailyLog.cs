@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace EasySave_v1._1.Models
 {
@@ -16,7 +17,7 @@ namespace EasySave_v1._1.Models
             this.logFilePath = logFilePath;
         }
 
-        public void LogDailyBackup(BackupJob backupJob)
+        public void LogDailyBackup(BackupJob backupJob, string logType)
         {
             try
             {
@@ -31,11 +32,29 @@ namespace EasySave_v1._1.Models
                     Time = DateTime.Now
                 };
 
-                // Sérialiser l'objet en JSON
-                string jsonLogEntry = Newtonsoft.Json.JsonConvert.SerializeObject(dailyLogEntry);
 
-                // Écrire le JSON dans le fichier de journal
-                File.AppendAllText(logFilePath, jsonLogEntry + Environment.NewLine);
+                if(logType == "json")
+                {
+                    // Sérialiser l'objet en JSON
+                    string jsonLogEntry = Newtonsoft.Json.JsonConvert.SerializeObject(dailyLogEntry);
+
+                    // Écrire le JSON dans le fichier de journal
+                    File.AppendAllText($"{logFilePath}.json", jsonLogEntry + Environment.NewLine);
+
+                }
+
+                if(logType == "xml")
+                {
+                    // Sérialiser l'objet en XML
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(DailyLogEntry));
+                    using (StringWriter writer = new StringWriter())
+                    {
+                        xmlSerializer.Serialize(writer, dailyLogEntry);
+
+                        // Écrire le XML dans le fichier de journal
+                        File.AppendAllText($"{logFilePath}.xml", writer.ToString() + Environment.NewLine);
+                    }
+                }
             }
             catch (Exception ex)
             {

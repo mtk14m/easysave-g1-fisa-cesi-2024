@@ -30,5 +30,12 @@
   "file_copy_completed_message": "Copie de fichier terminée",
   "error_occurred_message": "Une erreur s'est produite",
   "invalid_backup_index_message": "Indice de sauvegarde invalide. Veuillez réessayer.",
-  "backup_job_executed_successfully_message": "Tâche de sauvegarde exécutée avec succès."
+  "backup_job_executed_successfully_message": "Tâche de sauvegarde exécutée avec succès.",
+  "EnterLogType": "Entrez le type de Log (0 pour JSON, 1 pour XML) :",
+  "JSONType": "JSON",
+  "XMLType": "XML",
+  "LogTypeSetTo": "Type de journal défini sur",
+  "InvalidLogType": "Entrée invalide. Veuillez saisir 0 pour JSON ou 1 pour XML.",
+  "InvalidLogTypeInput": "Entrée invalide. Veuillez saisir un entier valide.",
+  "change_log_type": "Changer le type de Log"
 }

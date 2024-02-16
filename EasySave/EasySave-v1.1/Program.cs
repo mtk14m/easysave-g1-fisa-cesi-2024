@@ -28,7 +28,8 @@ namespace EasySave
                 Console.WriteLine($"1. {translator.Translate("add_backup_job")}");
                 Console.WriteLine($"2. {translator.Translate("list_backup_jobs")}");
                 Console.WriteLine($"3. {translator.Translate("change_language")}");
-                Console.WriteLine($"4. {translator.Translate("exit")}");
+                Console.WriteLine($"4. {translator.Translate("change_log_type")}");
+                Console.WriteLine($"5. {translator.Translate("exit")}");
 
                 Console.Write(translator.Translate("enter_choice"));
                 string choice = Console.ReadLine();
@@ -45,6 +46,9 @@ namespace EasySave
                         chLanguage();
                         break;
                     case "4":
+                        backupView.ChangeLogType();
+                        break;
+                    case "5":
                         Environment.Exit(0);
                         break;
                     default:

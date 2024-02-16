@@ -28,5 +28,14 @@
   "time_per_file_message": "Time per File",
   "remaining_time_message": "Remaining Time",
   "file_copy_completed_message": "File Copy Completed",
-  "error_occurred_message": "An error occurred"
+  "error_occurred_message": "An error occurred",
+  "invalid_backup_index_message": "Invalid backup index. Please try again.",
+  "backup_job_executed_successfully_message": "Backup job executed successfully.",
+  "EnterLogType": "Enter the log type (0 for JSON, 1 for XML):",
+  "JSONType": "JSON",
+  "XMLType": "XML",
+  "LogTypeSetTo": "Log type set to",
+  "InvalidLogType": "Invalid input. Please enter 0 for JSON or 1 for XML.",
+  "InvalidLogTypeInput": "Invalid input. Please enter a valid integer.",
+  "change_log_type": "Change Log Type"
 }
