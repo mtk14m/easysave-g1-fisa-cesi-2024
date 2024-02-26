@@ -1,0 +1,10 @@
+{
+  "Language": "fr-fr",
+  "DailyLogPath": "../../../Logs",
+  "StateLogPath": "../../../Logs",
+  "ExtensionsToEncrypt": ".txt,.docx,.xlsx",
+  "ExtensionsWithPriority": ".jpg,.png,.pdf",
+  "FileSizeLimit": 1024,
+  "ConfigFilePath": "../../../Ressources/",
+  "LogType": "JSON"
+}

@@ -1,9 +1,6 @@
 ﻿using EasySave_v1._0.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EasySave_v1._1.Models

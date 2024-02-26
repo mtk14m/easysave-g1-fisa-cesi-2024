@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EasySave_v2._0.Models
+﻿namespace EasySave_v2._0.Models
 {
     internal class BackupJob
     {
@@ -24,16 +17,19 @@ namespace EasySave_v2._0.Models
         public TimeSpan RemainingTime { get; set; } // Temps restant avant la fin de la copie
         public DateTime StartTime { get; set; } // Date et heure de début de la copie
         public TimeSpan TimePerFile { get; set; } // Temps moyen par fichier copié
-        public double ProgressPercentage // Pourcentage de progression de la sauvegarde
+
+        public double ProgressPercentage
         {
             get
             {
                 if (TotalFiles == 0) return 100; // Éviter une division par zéro
                 return (double)CopiedFiles / TotalFiles * 100;
             }
+            set
+            {
+                
+            }
         }
+
     }
-
-
 }
-

@@ -3,46 +3,71 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SideBar_Nav.Pages"
+      xmlns:local="EasySave_v2._0.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Page2">
+      Title="Add Backup Job"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto">
+
+    <Page.Resources>
+        <Style TargetType="Border" x:Key="RoundedBorder">
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="#e3e3e3">
-        
-           <Grid.ColumnDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="130"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" Margin="10">
-            <TextBlock Text="Add a new backup job" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Name" FontSize="15" Margin="0,0,10,0"/>
-                <TextBox x:Name="Name" Width="200" Height="30"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Source" FontSize="15" Margin="0,0,10,0"/>
-                <TextBox x:Name="Source" Width="200" Height="30"/>
-                <Button Content="Browse" Width="100" Height="30" Margin="10,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Destination" FontSize="15" Margin="0,0,10,0"/>
-                <TextBox x:Name="Destination" Width="200" Height="30"/>
-                <Button Content="Browse" Width="100" Height="30" Margin="10,0,0,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="Type" FontSize="15" Margin="0,0,10,0"/>
-                <ComboBox x:Name="Type" Width="200" Height="30">
-                    <ComboBoxItem Content="Complete"/>
-                    <ComboBoxItem Content="Differential"/>
-                    <ComboBoxItem Content="Incremental"/>
-                </ComboBox>
-            </StackPanel>
-        </StackPanel>
+        <TextBlock Grid.Column="1" Grid.Row="0" Text="Add a new backup job" FontSize="20" FontWeight="Bold" Margin="10"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Name" FontSize="15" Margin="10"/>
+
+        <Border HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Width="550" Height="30" Margin="10" Style="{StaticResource RoundedBorder}">
+            <TextBox x:Name="Name" Width="550" Height="26"  Background="{DynamicResource MaterialDesignPaper}"/>
+        </Border>
+
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="Source" FontSize="15" Margin="10"/>
+        <Border HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" Width="550" Height="30" Margin="10" Style="{StaticResource RoundedBorder}">
+            <TextBox x:Name="Source" Width="550" Height="26" Background="{DynamicResource MaterialDesignPaper}"/>
+        </Border>
+        <Button HorizontalAlignment="Left" Content="Browser" Grid.Column="2" Grid.Row="2" Width="100" Height="30" Margin="10,0,0,0" Visibility="Visible"  Click="BrowseButton_Click" Background="{DynamicResource thirdColor}" BorderBrush="{DynamicResource thirdColor}" x:Name="SourceBrowserButton"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="Destination" FontSize="15" Margin="10"/>
+        <Border Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" Width="550" Height="30" Margin="10" Style="{StaticResource RoundedBorder}">
+            <TextBox x:Name="Destination" Width="550" Height="26"  Background="{DynamicResource MaterialDesignPaper}"/>
+        </Border>
+        <Button HorizontalAlignment="Left" Content="Browser" Grid.Column="2" Grid.Row="3" Width="100" Height="30" Margin="10,0,0,0" Visibility="Visible"  Click="BrowseButton_Click" Background="{DynamicResource thirdColor}" BorderBrush="{DynamicResource thirdColor}" x:Name="TargetBrowserButton"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Type" FontSize="15" Margin="10"/>
+        <Border Grid.Column="1" HorizontalAlignment="Left" Margin="10" Grid.Row="4" Width="550" Height="30" Style="{StaticResource RoundedBorder}">
+            <ComboBox x:Name="Type"  Width="550" Height="30" Background="{DynamicResource MaterialDesignPaper}">
+                <ComboBoxItem Content="Complete"/>
+                <ComboBoxItem Content="Differential"/>
+            </ComboBox>
+        </Border>
+
+        <Button Content="Save" Background="LightGreen" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="5" Width="100" Height="30" Margin="10"/>
     </Grid>
 </Page>

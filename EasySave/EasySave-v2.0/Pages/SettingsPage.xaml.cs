@@ -1,28 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Windows;
+using EasySave_v2._0.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace SideBar_Nav.Pages
+namespace EasySave_v2._0.Pages
 {
-    /// <summary>
-    /// Interaction logic for Page4.xaml
-    /// </summary>
-    public partial class Page4 : Page
+    public partial class SettingsPage : Page
     {
-        public Page4()
+        private readonly SettingsViewModel _viewModel;
+
+        public SettingsPage()
         {
             InitializeComponent();
+            _viewModel = new SettingsViewModel();
+            DataContext = _viewModel;
+
+            // Définir la langue par défaut
+            LanguageComboBox.SelectedIndex = 0;
+            // Définir le type de log par défaut
+            LogTypeComboBox.SelectedIndex = 0;
+        }
+
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ResetConfig();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+                _viewModel.SaveConfig();
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var folderDialog = new OpenFileDialog
+            {
+                Title = "Select a folder",
+                CheckFileExists = false,
+                FileName = "Select Folder",
+                Filter = "Folders|no.files"
+            };
+
+            if (folderDialog.ShowDialog() == true)
+            {
+                string folderPath = Path.GetDirectoryName(folderDialog.FileName);
+
+                if (sender == DailyLogPathBrowseButton)
+                {
+                    _viewModel.DailyLogPath = folderPath;
+                }
+                if (sender == StateLogPathBrowseButton)
+                {
+                    _viewModel.StateLogPath = folderPath;
+                }
+                if (sender == ConfigFilePathBrowseButton)
+                {
+                    _viewModel.ConfigFilePath = folderPath;
+                }
+            }
         }
     }
 }

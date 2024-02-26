@@ -7,15 +7,24 @@
     xmlns:viewmodels="clr-namespace:EasySave_v2._0.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:BackupListViewModel}"
       mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800"
-    Title="BackupsList" FontFamily="ubuntu">
+    Title="BackupsList" 
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+      
+      >
 
     <Grid Background="#e3e3e3">
 
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition />
-                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -24,66 +33,98 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Row="0" VerticalAlignment="Top" BorderBrush="{Binding fistColor}" Height="50">
+                <Border Grid.Row="0" VerticalAlignment="Top" BorderBrush="{Binding firstColor}" Height="50">
                     <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" FontSize="30" FontWeight="ExtraBold" Text="Vos sauvegardes"></TextBlock>
                 </Border>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal"   HorizontalAlignment="Right" Visibility="Visible"  Height="50" VerticalAlignment="Bottom">
-                    <Button Cursor="Hand"  Click="Start_Click" Margin="5, 0,0,0"  Width="35" Height="30" Visibility="{Binding IsStartButtonVisible}">
-                        <Path Grid.Row="3" Data="{DynamicResource start}" Fill="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+                    <Button Cursor="Hand" x:Name="btnStart" Click="btnClicked" Margin="5, 0,0,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource StartIcon}" Visibility="{Binding IsBackupSelected}"
+                            >
                     </Button>
-                    <Button Cursor="Hand" Click="Pause_Click" Margin="5, 0,0,0"  Width="35" Height="30">
-                        <Path Grid.Row="3" Data="{DynamicResource pause}" Fill="{DynamicResource thirdColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+                    <Button Cursor="Hand" x:Name="btnPause"  Click="btnClicked" Margin="5, 0,0,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource PauseIcon}" Visibility="{Binding IsBackupSelected}">
                     </Button>
-                    <Button Cursor="Hand" Click="Stop_Click" Margin="5, 0,0,0"  Width="35" Height="30">
-                        <Path Grid.Row="3" Data="{DynamicResource stop}" Fill="{DynamicResource thirdColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+                    <Button Cursor="Hand" x:Name="btnStop"  Click="btnClicked" Margin="5, 0,0,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource StopIcon}" Visibility="{Binding IsBackupSelected}">
 
                     </Button>
-                    <Button Cursor="Hand" Click="Delete_Click" Margin="5, 0,15,0"  Width="35" Height="30">
-                        <Path Grid.Row="3" Data="{DynamicResource delete}" Fill="{DynamicResource thirdColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+                    <Button Cursor="Hand" x:Name="btnDelete"  Click="btnClicked" Margin="5, 0,15,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource DeleteIcon}" Visibility="{Binding IsBackupSelected}"                   
+                            >
+                        
                     </Button>
                 </StackPanel>
             </Grid>
-            <ListBox Style="{StaticResource CustomListBoxStyle}"
-                ItemContainerStyle="{StaticResource CustomListBoxItemStyle}"
-                ItemsSource="{Binding BackupJobs}" Grid.Row="1" x:Name="backupsListBox" Background="Azure">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Cursor="Hand" Margin="10,10,10,10">
-                            <CheckBox Margin="5" IsChecked="{Binding IsSelected, Mode=TwoWay}" VerticalAlignment="Center"/>
-                            <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-                                <TextBlock Margin="5">
-                                    <Run Text="Nom: "/>
-                                    <Run Text="{Binding Name}" />           
-                                </TextBlock>
-                                <TextBlock Margin="5">
-                                    <Run Text="Source Directory: "/>
-                                    <Run Text="{Binding SourceDirectory}" />
-                                </TextBlock>
-                                <TextBlock Margin="5">
-                                    <Run Text="Target Directory: "/>
-                                    <Run Text="{Binding TargetDirectory}" />
-                                </TextBlock>
-                                <Separator Background="{DynamicResource firstColor}"/>
-                            </StackPanel>
-                        </StackPanel>
-                        
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-
-            <Grid Grid.Row="2" Margin="0,0,50,0">
+            
+            <!--On va mettre notre affichage-->
+            <Grid Grid.Row="1" Visibility="Hidden">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="btnNext" Width="30" HorizontalAlignment="Right" Content="Suivant" Click="pagination"/>
-                <Button x:Name="btnPrevious" Width="30" HorizontalAlignment="Left" Content="Précédent" Click="pagination"/>
-                    
+
+                <!-- ProgressBar pour afficher la progression -->
+                <ProgressBar x:Name="progressBar" Grid.Row="0" Height="20" Margin="10" VerticalAlignment="Top"
+                 Value="{Binding Progress, Mode=OneWay}" Background="{DynamicResource thirdColor}" Minimum="0" Maximum="100"/>
+
+                <!-- TextBlock pour afficher le pourcentage de progression -->
+                <TextBlock HorizontalAlignment="Right" Grid.Row="1" Text="{Binding Progress, StringFormat={}{0}%}" Margin="10, 10, 10, 10" Foreground="DarkGreen"/>
+
+                <!-- TextBlocks pour afficher les autres informations -->
+                <TextBlock Grid.Row="2" Text="{Binding BackupName, StringFormat='Nom du Backup: {0}'}" Margin="10, 10, 10, 10" />
+                <TextBlock Grid.Row="1" Text="{Binding TransferredFileName, StringFormat='Fichier Transféré: {0}'}" Margin="10, 10, 10, 10" Foreground="DarkGreen" />
+
+                <TextBlock Grid.Row="4" Text="{Binding TransferredFilesCount, StringFormat='Transferred Files: {0}'}" Margin="10, 10, 10, 10"/>
+
+                <TextBlock Grid.Row="5"  Text="{Binding TotalFilesCount, StringFormat='Total Files: {0}'}" Margin="10, 10, 10, 10" HorizontalAlignment="Center"/>
             </Grid>
 
-            
+
+            <!-- Je vais faire une gride d'affichage-->
+            <ListView ItemsSource="{Binding BackupJobs}" Grid.Row="2" x:Name="backupsListBox" Background="{Binding thirdColor}">
+                <ListView.View>
+                    <GridView>
+                        <!-- Colonne pour la checkbox de sélection individuelle -->
+                        <GridViewColumn Header="n°" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox  Checked="CheckBox_Checked" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Name}" Width="150"/>
+                        <GridViewColumn Header="Répertoire Source" DisplayMemberBinding="{Binding SourceDirectory}" Width="150"/>
+                        <GridViewColumn Header="Répertoire Cible" DisplayMemberBinding="{Binding TargetDirectory}" Width="250"/>
+                        <GridViewColumn Header="État" DisplayMemberBinding="{Binding State}" Width="250"/>
+                        <GridViewColumn Header="Progression %" DisplayMemberBinding="{Binding ProgressPercentage, StringFormat={}{0}%}" Width="150"/>
+                        <GridViewColumn Header="Fichiers Transférés" DisplayMemberBinding="{Binding TransferredFiles}" Width="250"/>
+                        <GridViewColumn Header="Fichiers Restants" DisplayMemberBinding="{Binding RemainingFiles}" Width="250"/>
+                    </GridView>
+                </ListView.View>
+
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.Resources>
+            </ListView>
+
 
         </Grid>
+        
+        
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10, 10, 50, 10">
+            <Button x:Name="btnPrevious" HorizontalAlignment="Left" Click="pagination" Content="Précédent" Width="100" Height="30" Background="{DynamicResource thirdColor}" BorderBrush="{DynamicResource thirdColor}"  Command="{Binding PreviousPageCommand}" Margin="5"/>
+            <TextBlock Text="{Binding CurrentPage}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="/" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="btnNext" HorizontalAlignment="Right"  Click="pagination" Content="Suivant" Width="100" Height="30" Background="{DynamicResource thirdColor}" BorderBrush="{DynamicResource thirdColor}" Command="{Binding NextPageCommand}" Margin="5"/>
+        </StackPanel>
 
     </Grid>
 </Page>

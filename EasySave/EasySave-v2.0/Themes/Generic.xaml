@@ -13,6 +13,13 @@
     <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#0E1A32"/>
     <SolidColorBrush x:Key="SecundaryBackgroundColor" Color="#102341"/>
     <SolidColorBrush x:Key="TertiaryBackgroundColor" Color="#1C3254"/>
+    
+    <!--Icons-->
+    <Path x:Key="PauseIcon" Data="{DynamicResource pause}" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+    <Path x:Key="StartIcon" Data="{DynamicResource start}" Fill="LightGreen" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+    <Path x:Key="StopIcon" Data="{DynamicResource stop}" Fill="{DynamicResource thirdColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+    <Path x:Key="DeleteIcon" Data="{DynamicResource delete}" Fill="{DynamicResource thirdColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5" Width="25"/>
+
 
     <!-- System Colors -->
     <!-- Typograhy Colors -->

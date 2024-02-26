@@ -19,9 +19,6 @@
     <Page Update="Pages\AddBackupJobPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\Page3.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Pages\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>

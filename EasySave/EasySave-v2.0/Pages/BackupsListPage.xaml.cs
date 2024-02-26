@@ -25,7 +25,7 @@ namespace EasySave_v2._0.Pages
     {
         private BackupListViewModel viewModel;
         private CollectionViewSource collectionViewSource;
-
+        //private List<int> selectedIndexes;
         public BackupsListPage()
         {
             InitializeComponent();
@@ -63,49 +63,79 @@ namespace EasySave_v2._0.Pages
             // Implémenter la logique pour ajouter une sauvegarde (backup)
         }
 
-        private void Start_Click(object sender, RoutedEventArgs e)
-        {
-            // Implémenter la logique pour démarrer les sauvegardes sélectionnées
-        }
-
-        private void Pause_Click(object sender, RoutedEventArgs e)
-        {
-            // Implémenter la logique pour mettre en pause les sauvegardes sélectionnées
-        }
-
-        private void Stop_Click(object sender, RoutedEventArgs e)
-        {
-            // Implémenter la logique pour arrêter les sauvegardes sélectionnées
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            // Implémenter la logique pour supprimer les sauvegardes sélectionnées
-        }
-
         // Logique GetLog
 
         // Logique pour la pagination
         private void pagination(object sender, RoutedEventArgs e)
         {
-            if(sender == btnNext)
+            if (sender == btnNext)
             {
                 viewModel.NextPage();
+                RefreshBindings();
             }
-            else if(sender == btnPrevious) { 
-            
+            else if (sender == btnPrevious)
+            {
                 viewModel.PreviousPage();
+                RefreshBindings();
             }
-            collectionViewSource.View.Refresh();
-            backupsListBox.ItemsSource = collectionViewSource.View; 
 
+            collectionViewSource.View.Refresh(); // Rafraîchir la vue après avoir changé de page
         }
+
+        //Refreshh
+        private void RefreshBindings()
+        {
+            backupsListBox.ItemsSource = null;
+            backupsListBox.ItemsSource = viewModel.BackupJobs;
+        }
+
 
         //gestion des click sur les boutons
 
         private void btnClicked(object sender, RoutedEventArgs e)
         {
-            //TODO
+            //exécuter le backup
+            if (sender == btnStart)
+            {
+                if (DataContext is BackupListViewModel viewModel)
+                {
+                    List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
+                    viewModel.ExecuteBackups(selectedIndexes);
+                }
+                for (int i = 0; i< backupsListBox.Items.Count; i++)
+                {
+
+                }
+            }
+
+            //supprimer les backups
+            if (sender == btnDelete)
+            {
+                if (DataContext is BackupListViewModel viewModel)
+                {
+                    List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
+                    viewModel.DeleteBackups(selectedIndexes);
+                }
+            }
         }
+
+        //gestion des checked
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BackupListViewModel viewModel)
+            {
+                
+                List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
+                foreach (int index in selectedIndexes)
+                {
+                    Console.WriteLine($"Element at index {index} is selected.");
+                }
+            }
+
+            //gerer la visibilité des boutons
+
+        }
+
+
     }
 }
