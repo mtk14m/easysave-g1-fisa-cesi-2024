@@ -29,10 +29,32 @@ namespace EasySave_v2._0.Pages
         public BackupsListPage()
         {
             InitializeComponent();
+            //gerer la visibilité des boutons
+            btnStart.IsEnabled = false;
+            btnStart.Visibility = Visibility.Collapsed;
+            btnDelete.IsEnabled = false;
+            btnDelete.Visibility = Visibility.Collapsed;
+            btnStop.IsEnabled = false;
+            btnStop.Visibility = Visibility.Collapsed;
+            btnPause.IsEnabled = false;
+            btnPause.Visibility = Visibility.Collapsed;
 
             // Initialiser le ViewModel avant de le définir comme DataContext
             viewModel = new BackupListViewModel();
             DataContext = viewModel;
+
+            SettingsViewModel settingsViewModel = new SettingsViewModel();
+            settingsViewModel.LoadConfig();
+
+            //config variables
+            string dailyLogPath = settingsViewModel.DailyLogPath;
+            string stateLogPath = settingsViewModel.StateLogPath;
+            string configFilePath = settingsViewModel.ConfigFilePath;
+            string language = settingsViewModel.Language;
+            string logType = settingsViewModel.LogType;
+            string extensionsToEncrypt = settingsViewModel.ExtensionsToEncrypt;
+            //string priority = settingsViewModel.Priority;
+
 
             // Charger les backups après l'initialisation du ViewModel
             viewModel.LoadBackupJobsFromJson();
@@ -126,16 +148,65 @@ namespace EasySave_v2._0.Pages
             {
                 
                 List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
-                foreach (int index in selectedIndexes)
+               if(selectedIndexes.Count > 0)
                 {
-                    Console.WriteLine($"Element at index {index} is selected.");
+                    btnStart.IsEnabled = true;
+                    btnStart.Visibility = Visibility.Visible;
+                    btnDelete.IsEnabled = true;
+                    btnDelete.Visibility = Visibility.Visible;
+                    btnStop.IsEnabled = true;
+                    btnStop.Visibility = Visibility.Visible;
+                    btnPause.IsEnabled = true;
+                    btnPause.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    btnStart.IsEnabled = false;
+                    btnStart.Visibility = Visibility.Collapsed;
+                    btnDelete.IsEnabled = false;
+                    btnDelete.Visibility = Visibility.Collapsed;
+                    btnStop.IsEnabled = false;
+                    btnStop.Visibility = Visibility.Collapsed;
+                    btnPause.IsEnabled = false;
+                    btnPause.Visibility = Visibility.Collapsed;
                 }
             }
-
-            //gerer la visibilité des boutons
-
         }
 
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is BackupListViewModel viewModel)
+            {
+                List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
+                if (selectedIndexes.Count > 0)
+                {
+                    btnStart.IsEnabled = true;
+                    btnStart.Visibility = Visibility.Visible;
+                    btnDelete.IsEnabled = true;
+                    btnDelete.Visibility = Visibility.Visible;
+                    btnStop.IsEnabled = true;
+                    btnStop.Visibility = Visibility.Visible;
+                    btnPause.IsEnabled = true;
+                    btnPause.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    btnStart.IsEnabled = false;
+                    btnStart.Visibility = Visibility.Collapsed;
+                    btnDelete.IsEnabled = false;
+                    btnDelete.Visibility = Visibility.Collapsed;
+                    btnStop.IsEnabled = false;
+                    btnStop.Visibility = Visibility.Collapsed;
+                    btnPause.IsEnabled = false;
+                    btnPause.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
 
+        //progress test
+        public void UpdateProgress(double progressPercentage)
+        {
+            progressBar.Value = progressPercentage;
+        }
     }
 }

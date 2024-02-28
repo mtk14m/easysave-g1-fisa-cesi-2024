@@ -1,35 +1,73 @@
-﻿namespace EasySave_v2._0.Models
-{
-    internal class BackupJob
-    {
-        public string Name { get; set; } // Nom de la tâche de sauvegarde
-        public string SourceDirectory { get; set; } // Répertoire source
-        public string TargetDirectory { get; set; } // Répertoire cible
-        public string Type { get; set; } // Type de sauvegarde (complète, différentielle, etc.)
-        public DateTime LastRun { get; set; } // Date et heure de la dernière exécution
-        public State JobState { get; set; } // État de la tâche de sauvegarde
+﻿using System;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 
-        // Informations de progression de la sauvegarde
-        public int TotalFiles { get; set; } // Nombre total de fichiers à copier
-        public int CopiedFiles { get; set; } // Nombre de fichiers déjà copiés
-        public int RemainingFiles { get; set; } // Nombre de fichiers restants à copier
-        public TimeSpan ElapsedTime { get; set; } // Temps écoulé depuis le début de la copie
-        public TimeSpan RemainingTime { get; set; } // Temps restant avant la fin de la copie
-        public DateTime StartTime { get; set; } // Date et heure de début de la copie
-        public TimeSpan TimePerFile { get; set; } // Temps moyen par fichier copié
+namespace EasySave_v2._0.Models
+{
+    internal class BackupJob : INotifyPropertyChanged
+    {
+        private double progressPercentage;
+
+        public string Name { get; set; }
+        public string SourceDirectory { get; set; }
+        public string TargetDirectory { get; set; }
+        public string Type { get; set; }
+        public DateTime LastRun { get; set; }
+        public State JobState { get; set; }
+
+        // Informations de progression
+        public int TotalFiles { get; set; }
+        public int CopiedFiles { get; set; }
+        public int RemainingFiles { get; set; }
+        public TimeSpan ElapsedTime { get; set; }
+        public TimeSpan RemainingTime { get; set; }
+        public DateTime StartTime { get; set; }
+        public TimeSpan TimePerFile { get; set; }
 
         public double ProgressPercentage
         {
-            get
-            {
-                if (TotalFiles == 0) return 100; // Éviter une division par zéro
-                return (double)CopiedFiles / TotalFiles * 100;
-            }
+            get => progressPercentage;
             set
             {
-                
+                if (value != progressPercentage)
+                {
+                    progressPercentage = value;
+                    OnPropertyChanged(nameof(ProgressPercentage));
+                }
             }
         }
 
+        // Méthode pour mettre à jour les informations de progression
+        public void UpdateProgress(int copiedFiles, int totalFiles, DateTime startTime)
+        {
+            CopiedFiles = copiedFiles;
+            TotalFiles = totalFiles;
+            RemainingFiles = totalFiles - copiedFiles;
+            ElapsedTime = DateTime.Now - startTime;
+
+            if (TotalFiles > 0)
+            {
+                TimePerFile = TimeSpan.FromTicks(ElapsedTime.Ticks / TotalFiles);
+                RemainingTime = TimeSpan.FromTicks(RemainingFiles * TimePerFile.Ticks);
+                ProgressPercentage = Math.Round((double)copiedFiles / totalFiles * 100);
+            }
+            else
+            {
+                TimePerFile = TimeSpan.Zero;
+                RemainingTime = TimeSpan.Zero;
+                ProgressPercentage = 100; // Si TotalFiles est 0, la progression est complète
+            }
+        }
+
+        // Implementation de INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

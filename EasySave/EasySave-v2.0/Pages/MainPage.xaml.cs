@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace SideBar_Nav.Pages
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Page.xaml
     /// </summary>
     public partial class MainPage : Page
     {

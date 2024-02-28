@@ -26,7 +26,7 @@ namespace EasySave_v2._0.ViewModels
         private readonly string jsonPath = Path.Combine(Environment.CurrentDirectory, "../../../Ressources/backupjobs.json");
 
         private LanguageManager languageManager;
-        private FileCopier? fileCopier;
+        private FileCopier fileCopier;
 
         private DailyLogger dailyLogger = new DailyLogger(Path.Combine(Environment.CurrentDirectory, "../../../Logs", "daily_log.json"));
         private StateLogger stateLogger = new StateLogger(Path.Combine(Environment.CurrentDirectory, "../../../Logs", "state_log.json"));
@@ -40,14 +40,14 @@ namespace EasySave_v2._0.ViewModels
             SettingsViewModel settingsViewModel = new SettingsViewModel();
             settingsViewModel.LoadConfig();
 
-
+            
 
             ////////////////////
             _backupJobs = new ObservableCollection<BackupJob>(); // Initialiser la collection BackupJobs
             LoadBackupJobsFromJson(); // Chargement des emplois de sauvegarde depuis le fichier JSON
             PageIndex = 0; // Initialiser PageIndex
             PageSize = 10; // Définir le nombre d'éléments par page
-            fileCopier = new FileCopier(languageManager);
+            fileCopier = new FileCopier(languageManager,settingsViewModel.ReturnSettings());
 
             // Initialisation de la minuterie
             timer = new DispatcherTimer();
@@ -255,21 +255,23 @@ namespace EasySave_v2._0.ViewModels
             {
                 if (index < 0 || index >= _backupJobs.Count)
                 {
-                    // Gérer l'erreur de l'index hors de portée si nécessaire
                     continue;
                 }
 
                 try
                 {
                     BackupJob backupJob = _backupJobs[index];
-                    ValidateBackupJob(backupJob).Wait();
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(async (state) =>
+                    {
+                        await ValidateBackupJob(backupJob);
+                    }));
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
         }
+
 
         public void DeleteBackups(List<int> selectedIndexes)
         {

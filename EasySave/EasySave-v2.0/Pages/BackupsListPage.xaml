@@ -92,18 +92,34 @@
                         <GridViewColumn Header="n°" Width="40">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox  Checked="CheckBox_Checked" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                                    <CheckBox  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
                         <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Name}" Width="150"/>
                         <GridViewColumn Header="Répertoire Source" DisplayMemberBinding="{Binding SourceDirectory}" Width="150"/>
-                        <GridViewColumn Header="Répertoire Cible" DisplayMemberBinding="{Binding TargetDirectory}" Width="250"/>
-                        <GridViewColumn Header="État" DisplayMemberBinding="{Binding State}" Width="250"/>
-                        <GridViewColumn Header="Progression %" DisplayMemberBinding="{Binding ProgressPercentage, StringFormat={}{0}%}" Width="150"/>
-                        <GridViewColumn Header="Fichiers Transférés" DisplayMemberBinding="{Binding TransferredFiles}" Width="250"/>
-                        <GridViewColumn Header="Fichiers Restants" DisplayMemberBinding="{Binding RemainingFiles}" Width="250"/>
+                        <GridViewColumn Header="Répertoire Cible" DisplayMemberBinding="{Binding TargetDirectory}" Width="150"/>
+                        <GridViewColumn Header="Progression %" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <!-- Affichage du pourcentage de progression en tant que texte -->
+                                        <TextBlock Text="{Binding ProgressPercentage, StringFormat={}{0}%}" Margin="0,0,5,0"/>
+                                        <!-- Affichage de la barre de progression colorée -->
+                                        <ProgressBar Value="{Binding ProgressPercentage}" Minimum="0" Maximum="100" Width="100">
+                                            <ProgressBar.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Offset="0" Color="Red"/>
+                                                    <GradientStop Offset="1" Color="Green"/>
+                                                </LinearGradientBrush>
+                                            </ProgressBar.Background>
+                                        </ProgressBar>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                     </GridView>
                 </ListView.View>
 

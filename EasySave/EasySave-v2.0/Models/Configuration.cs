@@ -16,6 +16,7 @@ namespace EasySave_v2._0.Models
         public int FileSizeLimit { get; set; }
         public string ConfigFilePath { get; set; }
         public string LogType { get; set; }
+        public string LogicielMetier { get; set; }
     }
 }
 

@@ -127,7 +127,7 @@ namespace EasySave_v2._0.ViewModels
         }
 
         //Lire le fichier de configuration
-        public void LoadConfig()
+        internal void LoadConfig()
         {
             ConfigFilePath ="../../../Ressources/";
             try
@@ -159,6 +159,48 @@ namespace EasySave_v2._0.ViewModels
                 MessageBox.Show($"Une erreur s'est produite lors de la lecture de la configuration : {ex.Message}");
             }
         }
+
+        //get settings 
+        internal Configuration ReturnSettings()
+        {
+            // Créer une nouvelle instance de Configuration
+            Configuration config = new Configuration();
+
+            // Charger la configuration et mettre à jour les propriétés de l'instance de Configuration
+            try
+            {
+                string configFileName = "config.json";
+                string configFilePath = Path.Combine(ConfigFilePath, configFileName);
+
+                if (File.Exists(configFilePath))
+                {
+                    string jsonConfig = File.ReadAllText(configFilePath);
+                    Configuration loadedConfig = JsonConvert.DeserializeObject<Configuration>(jsonConfig);
+
+                    // Mettre à jour les propriétés de l'instance de Configuration avec les valeurs chargées
+                    config.Language = loadedConfig.Language;
+                    config.DailyLogPath = loadedConfig.DailyLogPath;
+                    config.StateLogPath = loadedConfig.StateLogPath;
+                    config.ExtensionsToEncrypt = loadedConfig.ExtensionsToEncrypt;
+                    config.ExtensionsWithPriority = loadedConfig.ExtensionsWithPriority;
+                    config.FileSizeLimit = loadedConfig.FileSizeLimit;
+                    config.LogType = loadedConfig.LogType;
+                }
+                else
+                {
+                    MessageBox.Show("Le fichier de configuration n'existe pas.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite lors de la lecture de la configuration : {ex.Message}");
+            }
+
+            // Retourner l'instance de Configuration
+            return config;
+        }
+
+
 
         public void SaveConfig()
         {

@@ -68,6 +68,6 @@
             </ComboBox>
         </Border>
 
-        <Button Content="Save" Background="LightGreen" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="5" Width="100" Height="30" Margin="10"/>
+        <Button Content="Save" Background="LightGreen" HorizontalAlignment="Left" Grid.Column="2" Grid.Row="5" Width="100" Height="30" Margin="10" Click="SaveButton_Click"/>
     </Grid>
 </Page>

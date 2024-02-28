@@ -1,7 +1,10 @@
 ﻿using EasySave_v2._0.Models;
+using EasySave_v2._0.Pages;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -10,6 +13,7 @@ namespace EasySave_v2._0.Packages
     internal class FileCopier
     {
         private LanguageManager translator;
+        private Configuration configData;
 
         public double ProgressPercentage { get; private set; }
         public int RemainingFiles { get; private set; }
@@ -17,86 +21,95 @@ namespace EasySave_v2._0.Packages
         public TimeSpan TimePerFile { get; private set; }
         public TimeSpan RemainingTime { get; private set; }
 
-        public FileCopier(LanguageManager languageManager)
+        public FileCopier(LanguageManager languageManager, Configuration config)
         {
             translator = languageManager;
+            configData = config;
         }
 
         public void CopyFiles(BackupJob backupJob)
         {
             Task.Run(() =>
             {
-                try
+                string[] files = Directory.GetFiles(backupJob.SourceDirectory, "*.*", SearchOption.AllDirectories);
+                int totalFiles = files.Length;
+                int copiedFiles = 0;
+
+                var priorityFiles = files.Where(file => configData.ExtensionsWithPriority.Contains(Path.GetExtension(file)));
+
+                List<Task> copyTasks = new List<Task>();
+
+                foreach (string file in priorityFiles)
                 {
-                    // Vérifier si les répertoires sources et cibles existent
-                    if (!Directory.Exists(backupJob.SourceDirectory))
+                    Task copyTask = Task.Run(() =>
                     {
-                        throw new DirectoryNotFoundException(translator.Translate("source_directory_not_found_message"));
-                    }
+                        string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
 
-                    if (!Directory.Exists(backupJob.TargetDirectory))
-                    {
-                        throw new DirectoryNotFoundException(translator.Translate("target_directory_not_found_message"));
-                    }
-
-                    // Obtenir la liste des fichiers à copier
-                    string[] sourceFiles = Directory.GetFiles(backupJob.SourceDirectory, "*", SearchOption.AllDirectories);
-                    int totalFiles = sourceFiles.Length;
-                    int copiedFiles = 0;
-
-                    // Démarrer le chronomètre pour le temps écoulé
-                    var stopwatch = Stopwatch.StartNew();
-
-                    foreach (string sourceFile in sourceFiles)
-                    {
-                        string relativePath = Path.GetRelativePath(backupJob.SourceDirectory, sourceFile);
-                        string targetFilePath = Path.Combine(backupJob.TargetDirectory, relativePath);
-
-                        if (backupJob.Type.ToLower() == "full" || !File.Exists(targetFilePath))
+                        if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
                         {
-                            // Copie complète ou le fichier n'existe pas dans le dossier cible
-                            File.Copy(sourceFile, targetFilePath, true);
-                            copiedFiles++;
-                        }
-                        else if (backupJob.Type.ToLower() == "differential")
-                        {
-                            // Copie différentielle (si le fichier source est plus récent que le fichier cible)
-                            DateTime sourceLastWriteTime = File.GetLastWriteTime(sourceFile);
-                            DateTime targetLastWriteTime = File.GetLastWriteTime(targetFilePath);
-
-                            if (sourceLastWriteTime > targetLastWriteTime)
-                            {
-                                File.Copy(sourceFile, targetFilePath, true);
-                                copiedFiles++;
-                            }
+                            EncryptFile(file);
                         }
 
-                        // Mettre à jour les informations de progression
-                        UpdateProgressInfo(copiedFiles, totalFiles, stopwatch.Elapsed);
+                        File.Copy(file, targetFilePath, true);
 
-                        // Attente d'une seconde entre chaque copie (facultatif)
-                        System.Threading.Thread.Sleep(1000);
-                    }
+                        Interlocked.Increment(ref copiedFiles);
+                        backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+                    });
 
-                    MessageBox.Show("Backup terminé.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                    copyTasks.Add(copyTask);
                 }
-                catch (Exception ex)
+
+                var nonPriorityFiles = files.Except(priorityFiles);
+
+                foreach (string file in nonPriorityFiles)
                 {
-                    // Gérer l'exception si nécessaire
+                    Task copyTask = Task.Run(() =>
+                    {
+                        string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
+                        if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
+                        {
+                            EncryptFile(file);
+                        }
+                        File.Copy(file, targetFilePath, true);
+
+                        Interlocked.Increment(ref copiedFiles);
+                        backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+
+                    });
+                    copyTasks.Add(copyTask);
                 }
+
+                Task.WaitAll(copyTasks.ToArray());
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show($"Le backup '{backupJob.Name}' est terminé.", "Backup Terminé", MessageBoxButton.OK, MessageBoxImage.Information);
+                });
             });
         }
 
-        private async Task UpdateProgressInfo(int copiedFiles, int totalFiles, TimeSpan elapsedTime)
+        //Chiffrer les fichiers
+        private void EncryptFile(string filePath)
         {
-            await Task.Run(() =>
+            try
             {
-                ProgressPercentage = (double)copiedFiles / totalFiles * 100;
-                RemainingFiles = totalFiles - copiedFiles;
-                ElapsedTime = elapsedTime;
-                TimePerFile = TimeSpan.FromSeconds(elapsedTime.TotalSeconds / copiedFiles);
-                RemainingTime = TimeSpan.FromSeconds(elapsedTime.TotalSeconds / copiedFiles * RemainingFiles);
-            });
+                byte[] fileBytes = File.ReadAllBytes(filePath);
+                byte[] key = Encoding.UTF8.GetBytes("YourEncryptionKey"); // Clé de chiffrement XOR
+
+                // Chiffrer chaque octet du fichier avec la clé
+                for (int i = 0; i < fileBytes.Length; i++)
+                {
+                    fileBytes[i] = (byte)(fileBytes[i] ^ key[i % key.Length]);
+                }
+
+                // Écrire les octets chiffrés dans le fichier
+                File.WriteAllBytes(filePath, fileBytes);
+            }
+            catch (Exception ex)
+            {
+                // Gérer l'exception si nécessaire
+                MessageBox.Show($"Erreur lors du chiffrement du fichier : {ex.Message}");
+            }
         }
 
         // Méthodes d'accès (getters) pour les informations de progression

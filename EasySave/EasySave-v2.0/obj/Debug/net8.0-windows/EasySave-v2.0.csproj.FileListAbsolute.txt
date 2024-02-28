@@ -122,3 +122,6 @@ C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\obj\Debug\net8.0-window
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\bin\Debug\net8.0-windows\ControlzEx.dll
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\bin\Debug\net8.0-windows\MahApps.Metro.dll
 C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\bin\Debug\net8.0-windows\MaterialDesignThemes.MahApps.dll
+C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\obj\Debug\net8.0-windows\Pages\ProgressWindow.g.cs
+C:\Documents Cesi\S1\prog sys\dir\EasySave\EasySave-v2.0\obj\Debug\net8.0-windows\Pages\ProgressWindow.baml
