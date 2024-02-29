@@ -58,29 +58,13 @@
             </Grid>
             
             <!--On va mettre notre affichage-->
-            <Grid Grid.Row="1" Visibility="Hidden">
+            <Grid Grid.Row="1" Visibility="Visible">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <!-- Définitions de lignes -->
                 </Grid.RowDefinitions>
-
-                <!-- ProgressBar pour afficher la progression -->
-                <ProgressBar x:Name="progressBar" Grid.Row="0" Height="20" Margin="10" VerticalAlignment="Top"
-                 Value="{Binding Progress, Mode=OneWay}" Background="{DynamicResource thirdColor}" Minimum="0" Maximum="100"/>
-
-                <!-- TextBlock pour afficher le pourcentage de progression -->
-                <TextBlock HorizontalAlignment="Right" Grid.Row="1" Text="{Binding Progress, StringFormat={}{0}%}" Margin="10, 10, 10, 10" Foreground="DarkGreen"/>
-
-                <!-- TextBlocks pour afficher les autres informations -->
-                <TextBlock Grid.Row="2" Text="{Binding BackupName, StringFormat='Nom du Backup: {0}'}" Margin="10, 10, 10, 10" />
-                <TextBlock Grid.Row="1" Text="{Binding TransferredFileName, StringFormat='Fichier Transféré: {0}'}" Margin="10, 10, 10, 10" Foreground="DarkGreen" />
-
-                <TextBlock Grid.Row="4" Text="{Binding TransferredFilesCount, StringFormat='Transferred Files: {0}'}" Margin="10, 10, 10, 10"/>
-
-                <TextBlock Grid.Row="5"  Text="{Binding TotalFilesCount, StringFormat='Total Files: {0}'}" Margin="10, 10, 10, 10" HorizontalAlignment="Center"/>
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="consoleTextBox" IsReadOnly="True" Background="White" Foreground="GreenYellow" FontFamily="Consolas"/>
+                </ScrollViewer>
             </Grid>
 
 
@@ -108,18 +92,13 @@
                                         <TextBlock Text="{Binding ProgressPercentage, StringFormat={}{0}%}" Margin="0,0,5,0"/>
                                         <!-- Affichage de la barre de progression colorée -->
                                         <ProgressBar Value="{Binding ProgressPercentage}" Minimum="0" Maximum="100" Width="100">
-                                            <ProgressBar.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                    <GradientStop Offset="0" Color="Red"/>
-                                                    <GradientStop Offset="1" Color="Green"/>
-                                                </LinearGradientBrush>
-                                            </ProgressBar.Background>
+                                            
                                         </ProgressBar>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
+                        <GridViewColumn Header="Statue" DisplayMemberBinding="{Binding JobState}" Width="150"/>
                     </GridView>
                 </ListView.View>
 

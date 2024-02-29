@@ -14,5 +14,21 @@
     "StartTime": "0001-01-01T00:00:00",
     "TimePerFile": "00:00:00",
     "ProgressPercentage": 0
+  },
+  {
+    "Name": "test 1",
+    "SourceDirectory": "C:\\test\\src",
+    "TargetDirectory": "C:\\test\\target",
+    "Type": "Complete",
+    "LastRun": "0001-01-01T00:00:00",
+    "JobState": 0,
+    "TotalFiles": 0,
+    "CopiedFiles": 0,
+    "RemainingFiles": 0,
+    "ElapsedTime": "00:00:00",
+    "RemainingTime": "00:00:00",
+    "StartTime": "0001-01-01T00:00:00",
+    "TimePerFile": "00:00:00",
+    "ProgressPercentage": 0
   }
 ]

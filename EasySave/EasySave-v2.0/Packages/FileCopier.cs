@@ -29,63 +29,125 @@ namespace EasySave_v2._0.Packages
 
         public void CopyFiles(BackupJob backupJob)
         {
-            Task.Run(() =>
+            Thread backupThread = new Thread(() =>
             {
                 string[] files = Directory.GetFiles(backupJob.SourceDirectory, "*.*", SearchOption.AllDirectories);
                 int totalFiles = files.Length;
                 int copiedFiles = 0;
+                backupJob.JobState = State.Active;
 
-                var priorityFiles = files.Where(file => configData.ExtensionsWithPriority.Contains(Path.GetExtension(file)));
+                var priorityFiles = files.Where(file => configData.ExtensionsWithPriority.Contains(Path.GetExtension(file))).ToList();
+                var nonPriorityFiles = files.Except(priorityFiles).ToList();
 
-                List<Task> copyTasks = new List<Task>();
+                int maxThreads = 5; // Nombre maximal de threads pouvant s'exécuter simultanément
+                Semaphore semaphore = new Semaphore(maxThreads, maxThreads); // Utilisation d'un sémaphore pour contrôler les threads
 
+                List<Thread> priorityThreads = new List<Thread>(); // Liste pour stocker les threads prioritaires
+                List<Thread> nonPriorityThreads = new List<Thread>(); // Liste pour stocker les threads non prioritaires
+
+                // Traitement des fichiers prioritaires
                 foreach (string file in priorityFiles)
                 {
-                    Task copyTask = Task.Run(() =>
+                    while (backupJob.IsPaused())
                     {
-                        string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
-
-                        if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
+                        Thread.Sleep(1000);
+                        if (backupJob.IsStopped())
                         {
-                            EncryptFile(file);
+                            backupJob.JobState = State.Stopped;
+                            return;
                         }
+                        if (backupJob.IsRunning())
+                        {
+                            backupJob.JobState = State.Paused;
+                            return;
+                        }
+                    }
+                    semaphore.WaitOne(); // Attendre qu'une place se libère dans le sémaphore
+                    Thread priorityThread = new Thread(() =>
+                    {
+                        try
+                        {
+                            string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
 
-                        File.Copy(file, targetFilePath, true);
+                            if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
+                            {
+                                EncryptFile(file);
+                            }
 
-                        Interlocked.Increment(ref copiedFiles);
-                        backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+                            File.Copy(file, targetFilePath, true);
+
+                            Interlocked.Increment(ref copiedFiles);
+                            backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+                        }
+                        finally
+                        {
+                            semaphore.Release(); // Libérer une place dans le sémaphore après que le thread ait terminé son travail
+                        }
                     });
 
-                    copyTasks.Add(copyTask);
+                    priorityThreads.Add(priorityThread); // Ajouter le thread à la liste
+                    priorityThread.Start();
                 }
 
-                var nonPriorityFiles = files.Except(priorityFiles);
-
+                // Traitement des fichiers non prioritaires
                 foreach (string file in nonPriorityFiles)
                 {
-                    Task copyTask = Task.Run(() =>
+                    while (backupJob.IsPaused())
                     {
-                        string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
-                        if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
+                        Thread.Sleep(1000);
+                        if (backupJob.IsStopped())
                         {
-                            EncryptFile(file);
+                            backupJob.JobState = State.Stopped;
+                            return;
                         }
-                        File.Copy(file, targetFilePath, true);
+                        if (backupJob.IsRunning())
+                        {
+                            backupJob.JobState = State.Paused;
+                            return;
+                        }
+                    }
+                    semaphore.WaitOne();
+                    Thread nonPriorityThread = new Thread(() =>
+                    {
+                        try
+                        {
+                            string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
+                            if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
+                            {
+                                EncryptFile(file);
+                            }
+                            else
+                            {
+                                File.Copy(file, targetFilePath, true);
+                            }
 
-                        Interlocked.Increment(ref copiedFiles);
-                        backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
-
+                            Interlocked.Increment(ref copiedFiles);
+                            backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+                        }
+                        finally
+                        {
+                            semaphore.Release(); // Libérer une place dans le sémaphore après que le thread ait terminé son travail
+                        }
                     });
-                    copyTasks.Add(copyTask);
+
+                    nonPriorityThreads.Add(nonPriorityThread); // Ajouter le thread à la liste
+                    nonPriorityThread.Start();
                 }
 
-                Task.WaitAll(copyTasks.ToArray());
+                // Attendre la fin de tous les threads
+                foreach (Thread thread in priorityThreads.Concat(nonPriorityThreads))
+                {
+                    thread.Join();
+                }
 
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     MessageBox.Show($"Le backup '{backupJob.Name}' est terminé.", "Backup Terminé", MessageBoxButton.OK, MessageBoxImage.Information);
                 });
             });
+
+            backupJob.JobState = State.Completed;
+            backupThread.Start();
         }
 
         //Chiffrer les fichiers

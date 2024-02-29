@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -78,14 +79,34 @@ namespace EasySave_v2._0.Pages
 
             // Utiliser la CollectionViewSource pour la pagination
             backupsListBox.ItemsSource = collectionViewSource.View;
+
+
+            //gerer les JobState
+            foreach (BackupJob backupJob in viewModel.BackupJobs)
+            {
+                backupJob.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == "JobState")
+                    {
+                        BackupJob job = (BackupJob)sender;
+                        job.ChangeState();
+                        if (job.JobState == State.Stopped)
+                        {
+                            UpdateConsole($"Le backup {job.Name} a été arrêté.", ConsoleColor.Red);
+                        }
+                        else if (job.JobState == State.Paused)
+                        {
+                            UpdateConsole($"Le backup {job.Name} a été mis en pause.", ConsoleColor.Yellow);
+                        }
+                        else if (job.JobState == State.Active)
+                        {
+                            UpdateConsole($"Le backup {job.Name} a été démarré.", ConsoleColor.Green);
+                        }
+                    }
+                };
+            }
         }
 
-        private void AddBackup_Click(object sender, RoutedEventArgs e)
-        {
-            // Implémenter la logique pour ajouter une sauvegarde (backup)
-        }
-
-        // Logique GetLog
 
         // Logique pour la pagination
         private void pagination(object sender, RoutedEventArgs e)
@@ -123,12 +144,21 @@ namespace EasySave_v2._0.Pages
                 {
                     List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
                     viewModel.ExecuteBackups(selectedIndexes);
+                    foreach (int index in selectedIndexes)
+                    {
+                        // Assurez-vous que l'index est valide
+                        if (index >= 0 && index < viewModel.BackupJobs.Count)
+                        {
+                            BackupJob backupJob = viewModel.BackupJobs[index];
+                            backupJob.Play(); // Annuler le backup
+                            backupJob.ChangeState();
+                        }
+                    }
+                    decocher(selectedIndexes);
                 }
-                for (int i = 0; i< backupsListBox.Items.Count; i++)
-                {
 
-                }
             }
+
 
             //supprimer les backups
             if (sender == btnDelete)
@@ -137,8 +167,72 @@ namespace EasySave_v2._0.Pages
                 {
                     List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
                     viewModel.DeleteBackups(selectedIndexes);
+                    decocher(selectedIndexes);
                 }
             }
+
+            //stopper les backups
+            if (sender == btnStop)
+            {
+                if (DataContext is BackupListViewModel viewModel)
+                {
+                    List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
+
+                    foreach (int index in selectedIndexes)
+                    {
+                        // Assurez-vous que l'index est valide
+                        if (index >= 0 && index < viewModel.BackupJobs.Count)
+                        {
+                            BackupJob backupJob = viewModel.BackupJobs[index];
+                            backupJob.Cancel(); // Annuler le backup
+                            backupJob.ChangeState();
+                        }
+                    }
+                    decocher(selectedIndexes);
+                }
+            }
+
+            //mettre en pause les backups
+            if (sender == btnPause)
+            {
+                if (DataContext is BackupListViewModel viewModel)
+                {
+                    List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
+
+                    foreach (int index in selectedIndexes)
+                    {
+                        
+                        if (index >= 0 && index < viewModel.BackupJobs.Count)
+                        {
+                            BackupJob backupJob = viewModel.BackupJobs[index];
+                            backupJob.Pause(); 
+                            backupJob.ChangeState();
+                        }
+                    }
+                    decocher(selectedIndexes);
+                }
+            }
+        }
+
+        private void decocher (List<int> selectedIndexes)
+        {
+            foreach (int index in selectedIndexes)
+            {
+                if (index >= 0 && index < backupsListBox.Items.Count)
+                {
+                    ListBoxItem listBoxItem = (ListBoxItem)backupsListBox.ItemContainerGenerator.ContainerFromIndex(index);
+                    if (listBoxItem != null)
+                    {
+                        CheckBox checkBox = FindVisualChild<CheckBox>(listBoxItem);
+                        if (checkBox != null)
+                        {
+                            checkBox.IsChecked = false;
+                        }
+                    }
+                }
+            }
+
+            selectedIndexes.Clear();
         }
 
         //gestion des checked
@@ -202,11 +296,54 @@ namespace EasySave_v2._0.Pages
                 }
             }
         }
-
-        //progress test
-        public void UpdateProgress(double progressPercentage)
+        //fiind visual child
+        private T FindVisualChild<T>(DependencyObject obj) where T : DependencyObject
         {
-            progressBar.Value = progressPercentage;
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
+                if (child != null && child is T)
+                {
+                    return (T)child;
+                }
+                else
+                {
+                    T childOfChild = FindVisualChild<T>(child);
+                    if (childOfChild != null)
+                    {
+                        return childOfChild;
+                    }
+                }
+            }
+            return null;
+        }
+
+       //Visualiser les logs
+        private void UpdateConsole(string message, ConsoleColor color)
+        {
+            
+            Console.ForegroundColor = color;
+
+           
+            consoleTextBox.AppendText(message + Environment.NewLine);
+
+            
+            Console.ResetColor();
+        }
+
+        
+        internal void DisplayInformationInConsole()
+        {
+            StringBuilder consoleMessage = new StringBuilder();
+
+            // Construire le message à afficher
+            consoleMessage.AppendLine($"Nom du Backup: {Name}");
+            /*consoleMessage.AppendLine($"Fichier Transféré: {SourceDirectory}");
+            consoleMessage.AppendLine($"Transferred Files: {CopiedFiles}");
+            consoleMessage.AppendLine($"Total Files: {TotalFiles}");*/
+
+            // Afficher le message dans la console avec la couleur spécifiée
+            UpdateConsole(consoleMessage.ToString(), ConsoleColor.Yellow);
         }
     }
 }

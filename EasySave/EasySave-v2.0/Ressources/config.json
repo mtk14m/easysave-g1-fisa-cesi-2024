@@ -3,8 +3,9 @@
   "DailyLogPath": "../../../Logs",
   "StateLogPath": "../../../Logs",
   "ExtensionsToEncrypt": ".txt,.docx,.xlsx",
-  "ExtensionsWithPriority": ".jpg,.png,.pdf",
+  "ExtensionsWithPriority": ".pdf",
   "FileSizeLimit": 1024,
   "ConfigFilePath": "../../../Ressources/",
-  "LogType": "JSON"
+  "LogType": "JSON",
+  "logicielMetier": "notepad.exe"
 }

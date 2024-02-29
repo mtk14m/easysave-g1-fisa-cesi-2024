@@ -231,3 +231,81 @@
 {"Name":"TEST IMPORTANT","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":100.0}
 {"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
 {"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":11,"TotalFilesSize":4,"NbFilesLeftToDo":7,"Progression":36.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":11,"TotalFilesSize":4,"NbFilesLeftToDo":7,"Progression":36.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":11,"TotalFilesSize":4,"NbFilesLeftToDo":7,"Progression":36.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":11,"TotalFilesSize":4,"NbFilesLeftToDo":7,"Progression":36.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Active","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":11,"TotalFilesSize":4,"NbFilesLeftToDo":7,"Progression":36.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":11,"TotalFilesSize":11,"NbFilesLeftToDo":0,"Progression":100.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":15,"TotalFilesSize":15,"NbFilesLeftToDo":0,"Progression":100.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":2480,"TotalFilesSize":2480,"NbFilesLeftToDo":0,"Progression":100.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":861,"NbFilesLeftToDo":4259,"Progression":17.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":1865,"NbFilesLeftToDo":3255,"Progression":36.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":1865,"NbFilesLeftToDo":3255,"Progression":36.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":1865,"NbFilesLeftToDo":3255,"Progression":36.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":1865,"NbFilesLeftToDo":3255,"Progression":36.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":1865,"NbFilesLeftToDo":3255,"Progression":36.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":2480,"TotalFilesSize":235,"NbFilesLeftToDo":2245,"Progression":9.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":2480,"TotalFilesSize":329,"NbFilesLeftToDo":2151,"Progression":13.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":755,"NbFilesLeftToDo":4365,"Progression":15.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":755,"NbFilesLeftToDo":4365,"Progression":15.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":755,"NbFilesLeftToDo":4365,"Progression":15.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":755,"NbFilesLeftToDo":4365,"Progression":15.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":755,"NbFilesLeftToDo":4365,"Progression":15.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":5120,"TotalFilesSize":1937,"NbFilesLeftToDo":3183,"Progression":38.0}
+{"Name":"Test 2","SourceFilePath":"C:\\test 2\\src 2","TargetFilePath":"C:\\test 2\\target 2","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":0,"TotalFilesSize":0,"NbFilesLeftToDo":0,"Progression":0.0}
+{"Name":"test 1","SourceFilePath":"C:\\test\\src","TargetFilePath":"C:\\test\\target","State":"Completed","TotalFilesToCopy":2480,"TotalFilesSize":775,"NbFilesLeftToDo":1705,"Progression":31.0}

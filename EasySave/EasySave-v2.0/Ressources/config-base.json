@@ -6,5 +6,6 @@
   "ExtensionsWithPriority": ".jpg,.png,.pdf",
   "FileSizeLimit": 1024,
   "ConfigFilePath": "../../../Ressources/",
-  "LogType": "JSON"
+  "LogType": "JSON",
+  "logicielMetier": "notepad.exe"
 }

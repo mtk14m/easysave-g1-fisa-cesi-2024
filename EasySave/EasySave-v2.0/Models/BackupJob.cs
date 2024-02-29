@@ -26,7 +26,7 @@ namespace EasySave_v2._0.Models
         public TimeSpan RemainingTime { get; set; }
         public DateTime StartTime { get; set; }
         public TimeSpan TimePerFile { get; set; }
-
+        
         public double ProgressPercentage
         {
             get => progressPercentage;
@@ -43,6 +43,7 @@ namespace EasySave_v2._0.Models
         // Méthode pour mettre à jour les informations de progression
         public void UpdateProgress(int copiedFiles, int totalFiles, DateTime startTime)
         {
+            JobState = State.Active;
             CopiedFiles = copiedFiles;
             TotalFiles = totalFiles;
             RemainingFiles = totalFiles - copiedFiles;
@@ -60,6 +61,79 @@ namespace EasySave_v2._0.Models
                 RemainingTime = TimeSpan.Zero;
                 ProgressPercentage = 100; // Si TotalFiles est 0, la progression est complète
             }
+            JobState = State.Completed;
+        }
+
+        //gestion des états pause et stop
+
+        public void Stop()
+        {
+            JobState = State.Stopped;
+        }
+        private volatile bool isPaused;
+        private volatile bool isStopped;
+        private volatile bool isRunning;
+
+
+        public void Pause()
+        {
+            isPaused = true;
+        }
+
+        public void Resume()
+        {
+            isPaused = false;
+            isRunning = true;
+            ChangeState();
+        }
+
+        public void Cancel()
+        {
+            progressPercentage = 0;
+            isStopped = true;
+            isRunning = false;
+            ChangeState();
+        }
+
+        public bool IsPaused()
+        {
+            ChangeState();
+            return isPaused;
+        }
+
+        //je veux changer le state de la tache selon les booléens
+        public void ChangeState()
+        {
+            if (isPaused)
+            {
+                JobState = State.Paused;
+            }
+            else if (isStopped)
+            {
+                JobState = State.Stopped;
+            }
+            else if (isRunning)
+            {
+                JobState = State.Active;
+            }
+        }
+
+        public bool IsStopped()
+        {
+            ChangeState();
+            return isStopped;
+        }
+        public bool IsRunning()
+        {
+            ChangeState();
+            return isRunning;
+        }
+
+        internal void Play()
+        {
+            isRunning = true;
+            isPaused = false;
+            isStopped = false;
         }
 
         // Implementation de INotifyPropertyChanged

@@ -149,12 +149,21 @@ namespace EasySave_v2._0.ViewModels
         {
             try
             {
-                string backupJobsJson = JsonSerializer.Serialize(_backupJobs, new JsonSerializerOptions { WriteIndented = true });
+                List<BackupJob> existingBackupJobs = new List<BackupJob>();
+                if (File.Exists(jsonPath))
+                {
+                    string existingBackupJobsJson = File.ReadAllText(jsonPath);
+                    existingBackupJobs = JsonSerializer.Deserialize<List<BackupJob>>(existingBackupJobsJson) ?? new List<BackupJob>();
+                }
+
+                existingBackupJobs.AddRange(_backupJobs);
+
+                string backupJobsJson = JsonSerializer.Serialize(existingBackupJobs, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(jsonPath, backupJobsJson);
             }
             catch (Exception ex)
             {
-                //Console.WriteLine($"Error writing backup jobs to JSON: {ex.Message}");
+                // Gérer l'exception si nécessaire
             }
         }
 
@@ -261,13 +270,15 @@ namespace EasySave_v2._0.ViewModels
                 try
                 {
                     BackupJob backupJob = _backupJobs[index];
-                    ThreadPool.QueueUserWorkItem(new WaitCallback(async (state) =>
+                    Thread backupThread = new Thread(() =>
                     {
-                        await ValidateBackupJob(backupJob);
-                    }));
+                        ValidateBackupJob(backupJob).GetAwaiter().GetResult();
+                    });
+                    backupThread.Start();
                 }
                 catch (Exception ex)
                 {
+                    // Gérer les exceptions ici
                 }
             }
         }
@@ -307,6 +318,26 @@ namespace EasySave_v2._0.ViewModels
                 // Gérer l'exception si nécessaire
             }
         }
+
+        //Stopper la sauvegarde
+        internal void StopBackup(BackupJob job)
+        {
+            job.Cancel();
+        }
+
+        //Pause de la sauvegarde
+        internal void PauseBackup(BackupJob job)
+        {
+            job.Pause();
+        }
+
+        //Changer l'état de la sauvegarde avec la methode changeState de BackupJob
+        internal void ChangeState(BackupJob job)
+        {
+            job.ChangeState();
+        }
+
+
 
         private async Task ValidateBackupJob(BackupJob job)
         {

@@ -7,11 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Pages\ProgressWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -22,9 +17,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\AddBackupJobPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Pages\ProgressWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SettingsPage.xaml">
