@@ -8,8 +8,14 @@ namespace EasySaveRemoteClient
     class RemoteViewModel
     {
         private TcpClient client;
-        private readonly string serverIp = "127.0.0.1"; // Adresse IP du serveur
-        private readonly int port = 12345; // Port sur lequel le serveur écoute
+        private string serverIp; // Adresse IP du serveur
+        private int port; // Port sur lequel le serveur écoute
+
+        public RemoteViewModel(string serverIp, int port)
+        {
+            this.serverIp = serverIp;
+            this.port = port;
+        }
 
         public async Task ConnectToServerAsync()
         {

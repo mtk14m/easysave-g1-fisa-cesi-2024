@@ -191,8 +191,6 @@ namespace EasySave_v2._0.Packages
                 fileMutex.WaitOne(); // Attendre pour obtenir le verrou
                 File.WriteAllBytes(encryptedFilePath, fileBytes);
                 fileMutex.ReleaseMutex(); // Libérer le verrou
-
-                MessageBox.Show($"Le fichier chiffré a été enregistré dans le dossier cible : {encryptedFilePath}", "Chiffrement Terminé", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasySaveRemoteClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95c94e6a3e7f26d8a24d042dd7524ea40ae767a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5571413e76c6da91cd8e53d87faa9f7a069ecc2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("EasySaveRemoteClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EasySaveRemoteClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

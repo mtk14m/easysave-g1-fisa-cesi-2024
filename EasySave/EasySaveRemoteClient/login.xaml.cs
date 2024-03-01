@@ -27,9 +27,9 @@ namespace EasySaveRemoteClient
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            string ipAddress = IP.Text;
-            string portNumber = Port.Text;
+            string serverIp = IP.Text; ; // Récupérer cette valeur depuis l'interface utilisateur
+            int port = Port.Text; // Récupérer cette valeur depuis l'interface utilisateur
+            RemoteViewModel remoteViewModel = new RemoteViewModel(serverIp, port);
         }
     }
 }
