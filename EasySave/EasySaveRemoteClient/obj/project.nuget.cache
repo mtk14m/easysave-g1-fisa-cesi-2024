@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "y5AKNhY6Uzi05biLbenkyPpmPFMc2sovmDyCU0XE+h0s8M5g2VJ/s+D1vEOMsckp2m3upDKZK8174i6GDPhlLA==",
+  "success": true,
+  "projectFilePath": "C:\\Documents Cesi\\S1\\prog sys\\dir\\EasySave\\EasySaveRemoteClient\\EasySaveRemoteClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+    "C:\\Users\\minou.matokonkalou\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

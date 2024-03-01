@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySave-v2.0", "EasySave-v2.0\EasySave-v2.0.csproj", "{249249AD-2BA6-4781-A74B-104199CB7EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySave-v1.0", "EasySave-v1.0\EasySave-v1.0.csproj", "{BCCDDAD8-DDAB-4548-882B-0F8BF42B268C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySave-v1.0", "EasySave-v1.0\EasySave-v1.0.csproj", "{BCCDDAD8-DDAB-4548-882B-0F8BF42B268C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySave-v1.1", "EasySave-v1.1\EasySave-v1.1.csproj", "{BA8D9054-7CEE-4126-BBEB-BC15BFBEB55D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySave-v1.1", "EasySave-v1.1\EasySave-v1.1.csproj", "{BA8D9054-7CEE-4126-BBEB-BC15BFBEB55D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySave.Utilities", "EasySave.Utilities\EasySave.Utilities.csproj", "{866FDBD1-E45F-4C9A-B7C1-23D32BC5F9E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasySave.Utilities", "EasySave.Utilities\EasySave.Utilities.csproj", "{866FDBD1-E45F-4C9A-B7C1-23D32BC5F9E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySaveRemoteClient", "EasySaveRemoteClient\EasySaveRemoteClient.csproj", "{F64753C5-C736-4778-B0DA-0693B31A985A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{866FDBD1-E45F-4C9A-B7C1-23D32BC5F9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866FDBD1-E45F-4C9A-B7C1-23D32BC5F9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866FDBD1-E45F-4C9A-B7C1-23D32BC5F9E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64753C5-C736-4778-B0DA-0693B31A985A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64753C5-C736-4778-B0DA-0693B31A985A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64753C5-C736-4778-B0DA-0693B31A985A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64753C5-C736-4778-B0DA-0693B31A985A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED30DFEE-98F7-4AB9-A7EC-F33ECCA17F80}
 	EndGlobalSection
 EndGlobal

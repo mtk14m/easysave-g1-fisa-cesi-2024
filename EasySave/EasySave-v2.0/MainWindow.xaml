@@ -38,17 +38,13 @@
 
                     <StackPanel Grid.Row="1">
                         <!--<RadioButton x:Name="rdMenu" Content="Home" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource menu}" Margin="0 30 0 0" Click="pageNavigation"/>-->
-                        <RadioButton x:Name="rdShow" Content="Backups" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource showBackups}" Margin="0 1 0 1" Click="pageNavigation"/>
+                        <RadioButton x:Name="rdShow" Content="Sauvegardes" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource showBackups}" Margin="0 1 0 1" Click="pageNavigation"/>
                         <RadioButton x:Name="rdAdd" Content="Ajouter" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource addBackup}" Click="pageNavigation"/>
                         <Separator Margin="20 20" Background="{DynamicResource thirdColor}"/>
 
-                        <RadioButton x:Name="rdSettings" Content="Settings" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource settings}" Click="pageNavigation"/>
+                        <RadioButton x:Name="rdSettings" Content="Paramètres" Style="{DynamicResource MenuRadioButtonStyle}" Tag="{DynamicResource settings}" Click="pageNavigation"/>
 
                     </StackPanel>
-
-
-
-                    <Path Grid.Row="3" Data="{DynamicResource information}" Fill="{DynamicResource thirdColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 0 0 0"/>
 
                 </Grid>
             </Border>

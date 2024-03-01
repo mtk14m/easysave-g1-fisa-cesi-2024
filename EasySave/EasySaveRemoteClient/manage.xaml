@@ -1,0 +1,157 @@
+﻿<Page x:Class="EasySaveRemoteClient.manage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EasySaveRemoteClient"
+      mc:Ignorable="d" 
+      Title="manage"    d:DesignHeight="450" d:DesignWidth="800" 
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+      
+      >
+
+    <Grid Background="#e3e3e3">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" VerticalAlignment="Top" BorderBrush="{Binding firstColor}" Height="50">
+                    <TextBlock VerticalAlignment="Center" Margin="10, 0, 0, 0" FontSize="30" FontWeight="ExtraBold" Text="Vos sauvegardes"></TextBlock>
+                </Border>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal"   HorizontalAlignment="Right" Visibility="Visible"  Height="50" VerticalAlignment="Bottom">
+                    <Button Cursor="Hand" x:Name="btnStart" Click="btnClicked" Margin="5, 0,0,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource StartIcon}" Visibility="{Binding IsBackupSelected}"
+                            >
+                    </Button>
+                    <Button Cursor="Hand" x:Name="btnPause"  Click="btnClicked" Margin="5, 0,0,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource PauseIcon}" Visibility="{Binding IsBackupSelected}">
+                    </Button>
+                    <Button Cursor="Hand" x:Name="btnStop"  Click="btnClicked" Margin="5, 0,0,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource StopIcon}" Visibility="{Binding IsBackupSelected}">
+
+                    </Button>
+                    <Button Cursor="Hand" x:Name="btnDelete"  Click="btnClicked" Margin="5, 0,15,0"  Width="auto" Height="30" Background="White"  BorderBrush="{DynamicResource firstColor}"
+                            Content="{DynamicResource DeleteIcon}" Visibility="{Binding IsBackupSelected}"                   
+                            >
+
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!--On va mettre notre affichage-->
+            <Grid Grid.Row="1" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <!-- Définitions de lignes -->
+                </Grid.RowDefinitions>
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="consoleTextBox" IsReadOnly="True" Background="White" Foreground="GreenYellow" FontFamily="Consolas"/>
+                </ScrollViewer>
+            </Grid>
+
+
+            <!-- Je vais faire une gride d'affichage-->
+            <ListView ItemsSource="{Binding BackupJobs}" Grid.Row="2" x:Name="backupsListBox" Background="{Binding thirdColor}">
+                <ListView.View>
+                    <GridView>
+                        <!-- Colonne pour la checkbox de sélection individuelle -->
+                        <GridViewColumn Header="n°" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Name}" Width="150"/>
+                        <GridViewColumn Header="Répertoire Source" DisplayMemberBinding="{Binding SourceDirectory}" Width="150"/>
+                        <GridViewColumn Header="Répertoire Cible" DisplayMemberBinding="{Binding TargetDirectory}" Width="150"/>
+                        <GridViewColumn Header="Progression %" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <!-- Affichage du pourcentage de progression en tant que texte -->
+                                        <TextBlock Text="{Binding ProgressPercentage, StringFormat={}{0}%}" Margin="0,0,5,0"/>
+                                        <!-- Affichage de la barre de progression colorée -->
+                                        <ProgressBar Value="{Binding ProgressPercentage}" Minimum="0" Maximum="100" Width="100">
+
+                                        </ProgressBar>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+                        <GridViewColumn Header="Statut" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding JobState}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="Black"/>
+                                                <!-- Couleur par défaut -->
+                                                <Style.Triggers>
+                                                    <!-- Condition pour l'état "Actif" -->
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Active">
+                                                        <Setter Property="Text" Value="En cours"/>
+                                                        <Setter Property="Foreground" Value="Blue"/>
+                                                        <!-- Couleur pour "En cours" -->
+                                                    </DataTrigger>
+                                                    <!-- Condition pour l'état "Pause" -->
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Paused">
+                                                        <Setter Property="Text" Value="En pause"/>
+                                                        <Setter Property="Foreground" Value="Orange"/>
+                                                        <!-- Couleur pour "En pause" -->
+                                                    </DataTrigger>
+                                                    <!-- Condition pour l'état "Arrêté" -->
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Completed">
+                                                        <Setter Property="Text" Value="Terminée"/>
+                                                        <Setter Property="Foreground" Value="Green"/>
+                                                        <!-- Couleur pour "Arrêté" -->
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Stopped">
+                                                        <Setter Property="Text" Value="Arrêtée"/>
+                                                        <Setter Property="Foreground" Value="red"/>
+                                                        <!-- Couleur pour "Arrêté" -->
+                                                    </DataTrigger>
+                                                    <!-- Ajoutez des conditions pour d'autres états si nécessaire -->
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+                    </GridView>
+                </ListView.View>
+
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.Resources>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

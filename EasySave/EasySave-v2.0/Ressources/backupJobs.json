@@ -5,7 +5,6 @@
     "TargetDirectory": "C:\\test 2\\target 2",
     "Type": "Complete",
     "LastRun": "0001-01-01T00:00:00",
-    "JobState": 0,
     "TotalFiles": 0,
     "CopiedFiles": 0,
     "RemainingFiles": 0,
@@ -13,6 +12,7 @@
     "RemainingTime": "00:00:00",
     "StartTime": "0001-01-01T00:00:00",
     "TimePerFile": "00:00:00",
+    "JobState": 0,
     "ProgressPercentage": 0
   },
   {
@@ -21,7 +21,6 @@
     "TargetDirectory": "C:\\test\\target",
     "Type": "Complete",
     "LastRun": "0001-01-01T00:00:00",
-    "JobState": 0,
     "TotalFiles": 0,
     "CopiedFiles": 0,
     "RemainingFiles": 0,
@@ -29,6 +28,7 @@
     "RemainingTime": "00:00:00",
     "StartTime": "0001-01-01T00:00:00",
     "TimePerFile": "00:00:00",
+    "JobState": 0,
     "ProgressPercentage": 0
   }
 ]

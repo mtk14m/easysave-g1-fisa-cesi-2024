@@ -293,31 +293,52 @@ namespace EasySave_v2._0.ViewModels
 
             try
             {
-                // Trier les index de manière décroissante pour éviter les erreurs d'index après la suppression
+                // Supprimer les éléments sélectionnés en ordre décroissant pour éviter les erreurs d'index
                 selectedIndexes.Sort();
                 selectedIndexes.Reverse();
 
-                // Calculer l'indice de départ de la page actuelle
-                int startIndex = PageIndex * PageSize;
+                List<BackupJob> existingBackupJobs = new List<BackupJob>();
+                if (File.Exists(jsonPath))
+                {
+                    string existingBackupJobsJson = File.ReadAllText(jsonPath);
+                    existingBackupJobs = JsonSerializer.Deserialize<List<BackupJob>>(existingBackupJobsJson) ?? new List<BackupJob>();
+                }
 
                 foreach (int selectedIndex in selectedIndexes)
                 {
-                    // Calculer l'indice réel de l'élément à supprimer dans la liste complète
-                    int indexToDelete = startIndex + selectedIndex;
+                    // Calculer l'index de l'élément à supprimer dans la liste complète
+                    int indexToDelete = selectedIndex;
+
+                    if (indexToDelete >= 0 && indexToDelete < existingBackupJobs.Count)
+                    {
+                        existingBackupJobs.RemoveAt(indexToDelete);
+                    }
+                }
+
+                string backupJobsJson = JsonSerializer.Serialize(existingBackupJobs, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(jsonPath, backupJobsJson);
+
+                // Mettre à jour l'affichage dans l'image (UI)
+                // Supprimer les backups de la liste _backupJobs
+                foreach (int selectedIndex in selectedIndexes)
+                {
+                    int indexToDelete = selectedIndex;
 
                     if (indexToDelete >= 0 && indexToDelete < _backupJobs.Count)
                     {
                         _backupJobs.RemoveAt(indexToDelete);
                     }
                 }
-
-                WriteBackupJobsToJson();
             }
             catch (Exception ex)
             {
                 // Gérer l'exception si nécessaire
             }
         }
+
+
+
+
 
         //Stopper la sauvegarde
         internal void StopBackup(BackupJob job)
@@ -372,7 +393,8 @@ namespace EasySave_v2._0.ViewModels
                 Name = name,
                 SourceDirectory = source,
                 TargetDirectory = destination,
-                Type = type
+                Type = type,
+                JobState = State.Ready
             };
             _backupJobs.Add(newBackupJob);
 
@@ -447,6 +469,17 @@ namespace EasySave_v2._0.ViewModels
                     OnPropertyChanged(nameof(TotalFilesCount));
                 }
             }
+        }
+
+
+
+        ///server de backup distants
+
+        private BackupServer backupServer = new BackupServer();
+
+        public async Task StartBackupServerAsync()
+        {
+            await Task.Run(() => backupServer.Start());
         }
     }
 }

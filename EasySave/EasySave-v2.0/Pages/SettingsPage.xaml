@@ -97,7 +97,7 @@
 
         <TextBlock Grid.Column="0" Grid.Row="10" Text="Logiciel Metier" FontSize="15" Margin="10"/>
         <Border HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Width="500" Height="30" Margin="10" Style="{StaticResource RoundedBorder}">
-            <TextBox x:Name="LogicielMetierTextBox" Width="500" Height="26" Background="{DynamicResource MaterialDesignPaper}" Text="{Binding ExtensionsWithPriority}"/>
+            <TextBox x:Name="LogicielMetierTextBox" Width="500" Height="26" Background="{DynamicResource MaterialDesignPaper}" Text="{Binding LogicielMetier}"/>
         </Border>
 
         <Button Content="Restaurer" Background="{DynamicResource thirdColor}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="11" Width="100" Height="30" Margin="10" Click="RestoreButton_Click"/>

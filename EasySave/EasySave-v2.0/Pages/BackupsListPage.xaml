@@ -92,13 +92,59 @@
                                         <TextBlock Text="{Binding ProgressPercentage, StringFormat={}{0}%}" Margin="0,0,5,0"/>
                                         <!-- Affichage de la barre de progression colorée -->
                                         <ProgressBar Value="{Binding ProgressPercentage}" Minimum="0" Maximum="100" Width="100">
-                                            
+
                                         </ProgressBar>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Statue" DisplayMemberBinding="{Binding JobState}" Width="150"/>
+                        
+                        
+
+                        <GridViewColumn Header="Statut" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding JobState}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="Black"/>
+                                                <!-- Couleur par défaut -->
+                                                <Style.Triggers>
+                                                    <!-- Condition pour l'état "Actif" -->
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Active">
+                                                        <Setter Property="Text" Value="En cours"/>
+                                                        <Setter Property="Foreground" Value="Blue"/>
+                                                        <!-- Couleur pour "En cours" -->
+                                                    </DataTrigger>
+                                                    <!-- Condition pour l'état "Pause" -->
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Paused">
+                                                        <Setter Property="Text" Value="En pause"/>
+                                                        <Setter Property="Foreground" Value="Orange"/>
+                                                        <!-- Couleur pour "En pause" -->
+                                                    </DataTrigger>
+                                                    <!-- Condition pour l'état "Arrêté" -->
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Completed">
+                                                        <Setter Property="Text" Value="Terminée"/>
+                                                        <Setter Property="Foreground" Value="Green"/>
+                                                        <!-- Couleur pour "Arrêté" -->
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding JobState}" Value="Stopped">
+                                                        <Setter Property="Text" Value="Arrêtée"/>
+                                                        <Setter Property="Foreground" Value="red"/>
+                                                        <!-- Couleur pour "Arrêté" -->
+                                                    </DataTrigger>
+                                                    <!-- Ajoutez des conditions pour d'autres états si nécessaire -->
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        
+                        
                     </GridView>
                 </ListView.View>
 

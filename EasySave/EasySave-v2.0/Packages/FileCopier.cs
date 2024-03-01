@@ -29,25 +29,36 @@ namespace EasySave_v2._0.Packages
 
         public void CopyFiles(BackupJob backupJob)
         {
+            bool isAnyLogicielMetierRunning = false;
+
             Thread backupThread = new Thread(() =>
             {
                 string[] files = Directory.GetFiles(backupJob.SourceDirectory, "*.*", SearchOption.AllDirectories);
                 int totalFiles = files.Length;
                 int copiedFiles = 0;
                 backupJob.JobState = State.Active;
-
+                string logicielMetierString = configData.LogicielMetier;
+                string[] logicielMetierList = logicielMetierString.Split(',');
                 var priorityFiles = files.Where(file => configData.ExtensionsWithPriority.Contains(Path.GetExtension(file))).ToList();
                 var nonPriorityFiles = files.Except(priorityFiles).ToList();
 
-                int maxThreads = 5; // Nombre maximal de threads pouvant s'exécuter simultanément
-                Semaphore semaphore = new Semaphore(maxThreads, maxThreads); // Utilisation d'un sémaphore pour contrôler les threads
+                int maxThreads = 5;
+                Semaphore semaphore = new Semaphore(maxThreads, maxThreads);
 
-                List<Thread> priorityThreads = new List<Thread>(); // Liste pour stocker les threads prioritaires
-                List<Thread> nonPriorityThreads = new List<Thread>(); // Liste pour stocker les threads non prioritaires
+                List<Thread> priorityThreads = new List<Thread>();
+                List<Thread> nonPriorityThreads = new List<Thread>();
 
-                // Traitement des fichiers prioritaires
                 foreach (string file in priorityFiles)
                 {
+                    foreach (string processName in logicielMetierList)
+                    {
+                        Process[] processes = Process.GetProcessesByName(processName);
+                        foreach (Process process in processes)
+                        {
+                            MessageBox.Show($"Le logiciel métier {process.ProcessName} est en cours d'exécution. Veuillez le fermer pour continuer le backup.");
+                            process.WaitForExit();
+                        }
+                    }
                     while (backupJob.IsPaused())
                     {
                         Thread.Sleep(1000);
@@ -62,7 +73,7 @@ namespace EasySave_v2._0.Packages
                             return;
                         }
                     }
-                    semaphore.WaitOne(); // Attendre qu'une place se libère dans le sémaphore
+                    semaphore.WaitOne();
                     Thread priorityThread = new Thread(() =>
                     {
                         try
@@ -71,27 +82,35 @@ namespace EasySave_v2._0.Packages
 
                             if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
                             {
-                                EncryptFile(file);
+                                EncryptFile(file, backupJob.TargetDirectory);
                             }
 
                             File.Copy(file, targetFilePath, true);
 
                             Interlocked.Increment(ref copiedFiles);
-                            backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+                            backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now, backupJob.JobState);
                         }
                         finally
                         {
-                            semaphore.Release(); // Libérer une place dans le sémaphore après que le thread ait terminé son travail
+                            semaphore.Release();
                         }
                     });
 
-                    priorityThreads.Add(priorityThread); // Ajouter le thread à la liste
+                    priorityThreads.Add(priorityThread);
                     priorityThread.Start();
                 }
 
-                // Traitement des fichiers non prioritaires
                 foreach (string file in nonPriorityFiles)
                 {
+                    foreach (string processName in logicielMetierList)
+                    {
+                        Process[] processes = Process.GetProcessesByName(processName);
+                        foreach (Process process in processes)
+                        {
+                            MessageBox.Show($"Le logiciel métier {process.ProcessName} est en cours d'exécution. Veuillez le fermer pour continuer le backup.");
+                            process.WaitForExit();
+                        }
+                    }
                     while (backupJob.IsPaused())
                     {
                         Thread.Sleep(1000);
@@ -114,7 +133,7 @@ namespace EasySave_v2._0.Packages
                             string targetFilePath = file.Replace(backupJob.SourceDirectory, backupJob.TargetDirectory);
                             if (configData.ExtensionsToEncrypt.Contains(Path.GetExtension(file)))
                             {
-                                EncryptFile(file);
+                                EncryptFile(file, backupJob.TargetDirectory);
                             }
                             else
                             {
@@ -122,19 +141,18 @@ namespace EasySave_v2._0.Packages
                             }
 
                             Interlocked.Increment(ref copiedFiles);
-                            backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now);
+                            backupJob.UpdateProgress(copiedFiles, totalFiles, DateTime.Now, backupJob.JobState);
                         }
                         finally
                         {
-                            semaphore.Release(); // Libérer une place dans le sémaphore après que le thread ait terminé son travail
+                            semaphore.Release();
                         }
                     });
 
-                    nonPriorityThreads.Add(nonPriorityThread); // Ajouter le thread à la liste
+                    nonPriorityThreads.Add(nonPriorityThread);
                     nonPriorityThread.Start();
                 }
 
-                // Attendre la fin de tous les threads
                 foreach (Thread thread in priorityThreads.Concat(nonPriorityThreads))
                 {
                     thread.Join();
@@ -142,39 +160,50 @@ namespace EasySave_v2._0.Packages
 
                 Application.Current.Dispatcher.Invoke(() =>
                 {
+                    backupJob.finished();
                     MessageBox.Show($"Le backup '{backupJob.Name}' est terminé.", "Backup Terminé", MessageBoxButton.OK, MessageBoxImage.Information);
                 });
             });
-
-            backupJob.JobState = State.Completed;
             backupThread.Start();
         }
 
-        //Chiffrer les fichiers
-        private void EncryptFile(string filePath)
+
+        private Mutex fileMutex = new Mutex(); // Mutex pour verrouiller l'accès au fichier
+
+        private void EncryptFile(string sourceFilePath, string targetDirectory)
         {
             try
             {
-                byte[] fileBytes = File.ReadAllBytes(filePath);
-                byte[] key = Encoding.UTF8.GetBytes("YourEncryptionKey"); // Clé de chiffrement XOR
+                fileMutex.WaitOne(); // Attendre pour obtenir le verrou
 
-                // Chiffrer chaque octet du fichier avec la clé
+                byte[] fileBytes = File.ReadAllBytes(sourceFilePath);
+                byte[] key = Encoding.UTF8.GetBytes("YourEncryptionKey");
+
                 for (int i = 0; i < fileBytes.Length; i++)
                 {
                     fileBytes[i] = (byte)(fileBytes[i] ^ key[i % key.Length]);
                 }
 
-                // Écrire les octets chiffrés dans le fichier
-                File.WriteAllBytes(filePath, fileBytes);
+                string encryptedFileName = Path.GetFileName(sourceFilePath) + ".enc";
+                string encryptedFilePath = Path.Combine(targetDirectory, encryptedFileName);
+
+                // Utiliser le même mutex pour verrouiller l'accès à l'écriture du fichier chiffré
+                fileMutex.WaitOne(); // Attendre pour obtenir le verrou
+                File.WriteAllBytes(encryptedFilePath, fileBytes);
+                fileMutex.ReleaseMutex(); // Libérer le verrou
+
+                MessageBox.Show($"Le fichier chiffré a été enregistré dans le dossier cible : {encryptedFilePath}", "Chiffrement Terminé", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                // Gérer l'exception si nécessaire
                 MessageBox.Show($"Erreur lors du chiffrement du fichier : {ex.Message}");
+            }
+            finally
+            {
+                fileMutex.ReleaseMutex(); // Libérer le verrou
             }
         }
 
-        // Méthodes d'accès (getters) pour les informations de progression
         public double GetProgressPercentage()
         {
             return ProgressPercentage;

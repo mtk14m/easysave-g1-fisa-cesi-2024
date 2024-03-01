@@ -310,3 +310,57 @@
 {"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844809484.35222,"Time":"2024-02-29T13:18:04.3525022+01:00"}
 {"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844815491.61235,"Time":"2024-02-29T14:58:11.6125843+01:00"}
 {"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844815538.52517,"Time":"2024-02-29T14:58:58.5251758+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844817434.56438,"Time":"2024-02-29T15:30:34.5646036+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844817442.635185,"Time":"2024-02-29T15:30:42.6351868+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844817500.357414,"Time":"2024-02-29T15:31:40.3574254+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844817577.738174,"Time":"2024-02-29T15:32:57.7381885+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844818357.55167,"Time":"2024-02-29T15:45:57.5518226+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844820177.41066,"Time":"2024-02-29T16:16:17.4108524+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844820458.76979,"Time":"2024-02-29T16:20:58.770045+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":0.0210385,"Time":"2024-02-29T16:21:08.4399892+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844820686.83155,"Time":"2024-02-29T16:24:46.8318238+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":25.5951123,"Time":"2024-02-29T16:25:29.5338059+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844820784.34469,"Time":"2024-02-29T16:26:24.3449143+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":99.9862767,"Time":"2024-02-29T16:30:33.99411+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844821366.06135,"Time":"2024-02-29T16:36:06.0615436+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":15.6538929,"Time":"2024-02-29T16:36:38.6134024+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844823338.338036,"Time":"2024-02-29T17:08:58.3382256+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844823457.147255,"Time":"2024-02-29T17:10:57.1473943+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844823466.010666,"Time":"2024-02-29T17:11:06.0106738+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844824087.54222,"Time":"2024-02-29T17:21:27.5425205+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844824100.191025,"Time":"2024-02-29T17:21:40.1910375+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844862243.8307,"Time":"2024-03-01T03:57:23.8308974+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844863105.20258,"Time":"2024-03-01T04:11:45.2027034+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844863441.861916,"Time":"2024-03-01T04:17:21.8621332+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844863691.16828,"Time":"2024-03-01T04:21:31.1684877+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844863902.249115,"Time":"2024-03-01T04:25:02.2492547+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844864002.06571,"Time":"2024-03-01T04:26:42.065878+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844864065.836266,"Time":"2024-03-01T04:27:45.8363999+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844864523.37888,"Time":"2024-03-01T04:35:23.3790076+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844864577.40841,"Time":"2024-03-01T04:36:17.4086405+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844864738.94203,"Time":"2024-03-01T04:38:58.9421673+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844865338.657486,"Time":"2024-03-01T04:48:58.6577524+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844865357.79341,"Time":"2024-03-01T04:49:17.7934058+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844865459.326454,"Time":"2024-03-01T04:50:59.3266602+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844866547.89682,"Time":"2024-03-01T05:09:07.8970631+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844866553.12592,"Time":"2024-03-01T05:09:13.1263065+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844866643.65851,"Time":"2024-03-01T05:10:43.6585573+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844866651.604225,"Time":"2024-03-01T05:10:51.6042212+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844866932.55218,"Time":"2024-03-01T05:15:32.5523004+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844866955.698685,"Time":"2024-03-01T05:15:55.698688+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844867223.712166,"Time":"2024-03-01T05:20:23.7123372+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844867237.026405,"Time":"2024-03-01T05:20:37.02641+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844867237.03005,"Time":"2024-03-01T05:20:37.0300566+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844867367.77663,"Time":"2024-03-01T05:22:47.7769532+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844867846.208664,"Time":"2024-03-01T05:30:46.2087898+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844868347.957565,"Time":"2024-03-01T05:39:07.9576992+01:00"}
+{"Name":"Test Navigator","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844869645.11031,"Time":"2024-03-01T06:00:45.1105364+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844870374.05042,"Time":"2024-03-01T06:12:54.0505729+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844870379.0621,"Time":"2024-03-01T06:12:59.0621076+01:00"}
+{"Name":"test 1","FileSource":"C:\\test\\src","FileTarget":"C:\\test\\target","FileSize":0,"FileTransferTime":63844875557.95161,"Time":"2024-03-01T07:39:17.9518779+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844875587.97564,"Time":"2024-03-01T07:39:47.9756506+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844876032.0416,"Time":"2024-03-01T07:47:12.0417636+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844876129.40516,"Time":"2024-03-01T07:48:49.4053084+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844876189.24458,"Time":"2024-03-01T07:49:49.2449253+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844878787.70525,"Time":"2024-03-01T08:33:07.7055359+01:00"}
+{"Name":"Test 2","FileSource":"C:\\test 2\\src 2","FileTarget":"C:\\test 2\\target 2","FileSize":0,"FileTransferTime":63844878812.61639,"Time":"2024-03-01T08:33:32.6163988+01:00"}

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -19,16 +20,34 @@ namespace EasySave_v2._0
     {
         public MainWindow()
         {
+            
+            bool isNewInstance;
+            Mutex mutex = new Mutex(true, "EasySave-v2.0", out isNewInstance);
+
+            if (!isNewInstance)
+            {
+                MessageBox.Show("L'application est déjà en cours d'exécution.");
+                Application.Current.Shutdown(); // Fermer cette instance de l'application
+            }
+
             InitializeComponent();
 
-            //Pour avoir la MainPage en page principale
             frameContent.Navigate(new Uri("/Pages/BackupsListPage.xaml", UriKind.Relative));
             rdShow.IsChecked = true;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            
+            foreach (Process process in Process.GetProcesses())
+            {
+                if (process.ProcessName == "EasySave-v2.0")
+                {
+                    process.Kill(); // Terminer le processus
+                }
+            }
+
+            Close(); // Fermer l'application
         }
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)

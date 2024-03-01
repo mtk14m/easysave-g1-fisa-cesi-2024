@@ -98,6 +98,20 @@ namespace EasySave_v2._0.ViewModels
             }
         }
 
+        private string _logicielMetier;
+        public string LogicielMetier
+        {
+            get { return _logicielMetier; }
+            set
+            {
+                if (_logicielMetier != value)
+                {
+                    _logicielMetier = value;
+                    OnPropertyChanged(nameof(LogicielMetier));
+                }
+            }
+        }
+
         private string _configFilePath;
         public string ConfigFilePath
         {
@@ -148,6 +162,7 @@ namespace EasySave_v2._0.ViewModels
                     ExtensionsWithPriority = config.ExtensionsWithPriority;
                     FileSizeLimit = config.FileSizeLimit;
                     LogType = config.LogType;
+                    LogicielMetier = config.LogicielMetier;
                 }
                 else
                 {
@@ -185,6 +200,7 @@ namespace EasySave_v2._0.ViewModels
                     config.ExtensionsWithPriority = loadedConfig.ExtensionsWithPriority;
                     config.FileSizeLimit = loadedConfig.FileSizeLimit;
                     config.LogType = loadedConfig.LogType;
+                    config.LogicielMetier = loadedConfig.LogicielMetier;
                 }
                 else
                 {
@@ -215,8 +231,9 @@ namespace EasySave_v2._0.ViewModels
                     ExtensionsWithPriority = ExtensionsWithPriority,
                     FileSizeLimit = FileSizeLimit,
                     ConfigFilePath = ConfigFilePath,
-                    LogType = LogType
-                };
+                    LogType = LogType,
+                    LogicielMetier = LogicielMetier
+            };
 
                 string configFileName = "config.json";
                 string configFilePath = Path.Combine(ConfigFilePath, configFileName);

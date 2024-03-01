@@ -7,5 +7,5 @@
   "FileSizeLimit": 1024,
   "ConfigFilePath": "../../../Ressources/",
   "LogType": "JSON",
-  "logicielMetier": "notepad.exe"
+  "LogicielMetier": "notepad"
 }

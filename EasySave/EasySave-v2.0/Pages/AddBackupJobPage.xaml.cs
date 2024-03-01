@@ -45,6 +45,8 @@ namespace EasySave_v2._0.Pages
             // Appeler la méthode du ViewModel pour créer et sauvegarder le nouveau travail de sauvegarde
             viewmodel.CreateAndSaveBackupJob(name, source, destination, type);
 
+            //navigr vers la page de liste des travaux de sauvegarde
+            this.NavigationService.Navigate(new BackupsListPage());
             // Afficher un message de confirmation
             MessageBox.Show("Nouveau travail de sauvegarde enregistré avec succès.");
         }

@@ -82,7 +82,7 @@ namespace EasySave_v2._0.Pages
 
 
             //gerer les JobState
-            foreach (BackupJob backupJob in viewModel.BackupJobs)
+            /*foreach (BackupJob backupJob in viewModel.BackupJobs)
             {
                 backupJob.PropertyChanged += (sender, e) =>
                 {
@@ -104,7 +104,7 @@ namespace EasySave_v2._0.Pages
                         }
                     }
                 };
-            }
+            }*/
         }
 
 
@@ -150,7 +150,7 @@ namespace EasySave_v2._0.Pages
                         if (index >= 0 && index < viewModel.BackupJobs.Count)
                         {
                             BackupJob backupJob = viewModel.BackupJobs[index];
-                            backupJob.Play(); // Annuler le backup
+                            backupJob.Play(); 
                             backupJob.ChangeState();
                         }
                     }
@@ -168,6 +168,8 @@ namespace EasySave_v2._0.Pages
                     List<int> selectedIndexes = viewModel.GetSelectedIndexes(backupsListBox);
                     viewModel.DeleteBackups(selectedIndexes);
                     decocher(selectedIndexes);
+                    
+                    RefreshBindings();
                 }
             }
 
@@ -318,31 +320,30 @@ namespace EasySave_v2._0.Pages
             return null;
         }
 
-       //Visualiser les logs
+        //Visualiser les logs
         private void UpdateConsole(string message, ConsoleColor color)
         {
-            
+
             Console.ForegroundColor = color;
 
-           
-            consoleTextBox.AppendText(message + Environment.NewLine);
 
-            
+            consoleTextBox.AppendText($"{message}\n");
+
+
             Console.ResetColor();
         }
 
-        
-        internal void DisplayInformationInConsole()
+
+        internal void DisplayInformationInConsole(BackupJob backupJob)
         {
             StringBuilder consoleMessage = new StringBuilder();
 
-            // Construire le message à afficher
-            consoleMessage.AppendLine($"Nom du Backup: {Name}");
-            /*consoleMessage.AppendLine($"Fichier Transféré: {SourceDirectory}");
-            consoleMessage.AppendLine($"Transferred Files: {CopiedFiles}");
-            consoleMessage.AppendLine($"Total Files: {TotalFiles}");*/
+            // Construire le message à afficher en utilisant les propriétés de l'objet BackupJob
+            consoleMessage.AppendLine($"Nom du Backup: {backupJob.Name}");
+            consoleMessage.AppendLine($"Fichier Transféré: {backupJob.SourceDirectory}");
+            consoleMessage.AppendLine($"Fichiers Transférés: {backupJob.CopiedFiles}");
+            consoleMessage.AppendLine($"Fichiers Totals: {backupJob.TotalFiles}");
 
-            // Afficher le message dans la console avec la couleur spécifiée
             UpdateConsole(consoleMessage.ToString(), ConsoleColor.Yellow);
         }
     }
